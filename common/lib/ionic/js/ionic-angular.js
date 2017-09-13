@@ -3169,7 +3169,9 @@ function($ionicModal, $ionicPosition, $document, $window) {
     var popoverCSS = {
       left: buttonOffset.left + buttonOffset.width / 2 - popoverWidth / 2
     };
+
     var arrowEle = jqLite(popoverEle[0].querySelector('.popover-arrow'));
+    
 
     if (popoverCSS.left < POPOVER_BODY_PADDING) {
       popoverCSS.left = POPOVER_BODY_PADDING;
@@ -12317,7 +12319,7 @@ IonicModule
   return {
     restrict: 'E',
     compile: function(element) {
-      element.append(jqLite('<div class="popover-arrow">'));
+      // element.append(jqLite('<div class="popover-arrow">'));
       element.addClass('popover');
     }
   };
