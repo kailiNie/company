@@ -1,0 +1,15 @@
+<ion-popover-view class="scanCodeWaitModal">
+	<ion-content>
+		<div class="modalContent">
+			<div class="upContent">
+				<div><img src="img/waitIcon.png"/></div>				
+				<p>正在付款，请稍后...</p>
+			</div>
+			<div class="downContent">
+				<p ng-if="!data.isShortcutPay">根据微信安全问题，请提醒顾客在</p>
+				<p ng-if="data.isShortcutPay">根据支付安全问题，请提醒顾客在</p>
+				<p>他的手机上输入支付密码。</p>
+			</div>
+		</div>
+	</ion-content>
+</ion-popover-view>

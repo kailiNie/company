@@ -1,0 +1,60 @@
+<ion-view class="bg_f0f0f0 bankAuthentication" view-title="填写结算信息">
+<!--     <ion-nav-buttons side="left">  
+        <a href="javascript:history.back(-1)" class="button button-icon icon ion-ios-arrow-thin-left" nav-direction="back"></a>  
+    </ion-nav-buttons>  -->
+       <ion-content>
+        <div>
+        <p class="promptTitle" ><a>*认证须知，</a>认证银行卡须填写商家本人结算储蓄卡，以后不支持变更。</p>
+        <ng-form name="form1">
+            <div style="padding-left: 20px;padding-right: 20px;background: #ffffff" >
+                <label class="item item-input" >
+                    <span class="input-label"> 商户名称 </span>
+                    <input type="text"   ng-model='name1' placeholder="请填写持卡人" required></input>
+                </label>
+                <label class="item item-input" >
+                    <span class="input-label"> 所在区域 </span>
+                    <input type="text"   ng-model='name2'  placeholder="请填写所在区域" required></input>
+                </label>
+                 <label class="item item-input">
+                    <span class="input-label"> 详细地址</span>
+                    <input type="text" ng-model='name3'    placeholder="请填写详细地址"   maxlength="11"  required  ></input>
+                </label>
+            </div>
+            <span class="promptTitle"> </span>
+              <div style="padding-left: 20px;padding-right: 20px;background: #ffffff">
+
+                <label class="item item-input">
+                    <span class="input-label"> 卡号 </span>
+                    <input type="tel"  ng-model='name1' placeholder="请填写卡号" required></input>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label"> 姓名 </span>
+                    <input type="tel"   ng-model='name2'  placeholder="请填写姓名" required></input>
+                </label>
+                 <label class="item item-input">
+                    <span class="input-label"> 身份证号</span>
+                    <input type="tel" ng-model='name3'    placeholder="请填写身份证号"   maxlength="11"  required  ></input>
+                </label>
+                  <label class="item item-input">
+                    <span class="input-label"> 开户行省份</span>
+                    <input type="tel" ng-model='name3'    placeholder="请填写开户行省份"   maxlength="11"  required  ></input>
+                </label>
+                 <label class="item item-input">
+                <span class="input-label"> 开户行城市</span>
+                    <input type="tel" ng-model='name3'    placeholder="请填写开户行城市"   maxlength="11"  required  ></input>
+                </label>
+            </div>
+          
+
+            <div class="row">
+                <div class="col col-60 col-offset-20">
+                    <button class="button button-assertive button-block" ng-click='save($event)' ng-disabled='form1.$error.required'>提交认证</button>
+                </div>
+            </div>
+
+        </ng-form>
+     </div>
+
+    </ion-content>
+    
+</ion-view>

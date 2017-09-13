@@ -1,0 +1,29 @@
+<ion-view view-title="付款成功" class="succeed bg_f0f0f0">
+	<ion-nav-bar class="bar-stable">
+		<ion-nav-back-button ng-show="false">
+
+		</ion-nav-back-button>
+	</ion-nav-bar>
+	<ion-content >
+		<img src="img/succeed.jpg?v=1" class="bg">
+		<div class="wrap bg_fff">
+			<p class="text-center">￥{{data.amount | number:2}}</p>
+			<p class="text-center">{{data.shopName}}{{data.branchShopName?"("+data.branchShopName+")":""}}</p>
+			<p class="text-center">支付时间&nbsp;{{data.payDateTime}}</p>
+			<p class="text-center">付款码:&nbsp;{{data.payCode}}</p>
+		</div>
+		<ion-item class="item-input item-icon-right noborder" ng-click="fun.godetail()">
+			<span class="input-label">积分奖励:&nbsp;&nbsp; &nbsp;&nbsp;<span>收入{{data.score}}积分现有{{data.totalScore}}积分</span></span>
+			<i class="icon ion-ios-arrow-right"></i>
+		</ion-item>
+		<div class="foot">
+			<img src="img/appraise.jpg">
+			<p>评价可以有态度</p>
+			<p>到本店消费的90%消费者已经表明态度</p>
+			<button ng-disabled="data.first"
+					class="button button-block"
+					ng-click="fun.go()">立即评价</button>
+		</div>
+
+	</ion-content>
+</ion-view>

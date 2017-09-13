@@ -1,0 +1,13 @@
+<ion-view  view-title="服务商列表" class="bg_f0f0f0 hasTitle">
+
+    <ion-content class="padding-top">
+        <ion-list class="ssp_clerklist ">
+            <ion-item class="item" ng-repeat="item in data">
+                <div class="row">
+                    <p class="col col-50 text-left">{{item.agencieName}}</p>
+                    <p class="col col-50 text-right">{{item.recommendCode}}</p>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

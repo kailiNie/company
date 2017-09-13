@@ -1,0 +1,23 @@
+<ion-view view-title="{{data.title}}账户" class="ssp-qrOrder bg_f0f0f0">
+  <ion-nav-buttons side="right">
+    <span style="line-height: 36px;" ng-click="fun.goBudgetDetail()">{{data.title}}收支明细</span>
+  </ion-nav-buttons>
+  <ion-content>
+    <ion-list>
+      <ion-item class="head" ng-show="data.type==1">
+        <p class="text-left">当前{{data.title}}账户余额：</p>
+        <p class="text-center font_28"><span>{{data.amount | number:2}}</span>元</p>
+      </ion-item>
+      <ion-item class="head" ng-show="data.type==2">
+        <p class="text-left">当前{{data.title}}账户余额：</p>
+        <p class="text-center font_28"><span>{{data.amount | number:3}}</span>元</p>
+      </ion-item>
+      <ion-item class="padding noborder bg_f0f0f0 btn-pagesingle">
+        <button class="button button-block button-assertive"
+                ng-click="fun.goTiXian()">提现
+        </button>
+        <input type="hidden" id="save"/>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

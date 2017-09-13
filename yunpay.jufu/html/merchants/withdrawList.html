@@ -1,0 +1,82 @@
+<ion-view view-title="提现记录" class=" bg_f0f0f0">
+    <ion-content>
+
+        <ion-list ng-show="data.showIndex==0">
+
+            <ion-item class="item-divider row">
+                <span class="col col-50 font_14 color_444 text-left">{{data.searchday}}</span>
+                <a class="col col-50 font_14 color_dc4b39 text-right" ng-click="fun.showDate($event)"><查询></a>
+            </ion-item>
+
+            <ion-item class="row item" ng-click="fun.view(item)" ng-repeat="item in data.all">
+                <p class="col col-30 font_14 color_a2a2a2 text-left font_12">
+                    {{fun.common.getday(item.withdrawalDateTime)}}
+                </p>
+                <p class="col col-30 font_14 color_444 text-right">{{item.amount | number:2}}</p>
+                <p
+                        class="col col-40 font_14  text-right"
+                        ng-class="{
+                        'color_dc4b39':item.withdrawalStatus==2 || item.withdrawalStatus==5 || item.withdrawalStatus==9,
+                        'color_51abf0':item.withdrawalStatus==1 || item.withdrawalStatus==3 || item.withdrawalStatus==8,
+                        'color_9ccc65':item.withdrawalStatus==4}"
+                >
+                    {{item.withdrawalStatusName}}
+                </p>
+            </ion-item>
+
+            <ion-item class="padding0 noborder pageinitnoresult"
+                      ng-show="page.initNoResultShow()">
+
+                <p class="padding5 color_969696 text-center bg_f0f0f0">没有收入数据</p>
+
+            </ion-item>
+
+            <ion-item class="padding0 noborder pageUpNoResult"
+                      ng-show="(!page.initNoResultShow() && page.upNoResultShow())">
+
+                <p class="padding5 color_969696 text-center bg_f0f0f0">没有更多数据</p>
+
+            </ion-item>
+
+        </ion-list>
+
+        <ion-list ng-show="data.showIndex==1">
+
+            <ion-item class="item-divider row">
+                <span class="col col-50 font_14 color_444 text-left">{{data.searchday}}</span>
+                <a class="col col-50 font_14 color_dc4b39 text-right" ng-click="fun.showDate($event)"><查询></a>
+            </ion-item>
+
+            <ion-item class="row item" ng-click="fun.view(item)" ng-repeat="item in data.day">
+                <p class="col col-30 font_14 color_a2a2a2 text-left font_12">
+                    {{fun.common.getday(item.withdrawalDateTime)}}
+                </p>
+                <p class="col col-30 font_14 color_444 text-right">{{item.amount | number:2}}</p>
+                <p
+                        class="col col-40 font_14  text-right"
+                        ng-class="{
+                        'color_dc4b39':item.withdrawalStatus==2 || item.withdrawalStatus==5 || item.withdrawalStatus==9,
+                        'color_51abf0':item.withdrawalStatus==1 || item.withdrawalStatus==3 || item.withdrawalStatus==8,
+                        'color_9ccc65':item.withdrawalStatus==4}"
+                >
+                    {{item.withdrawalStatusName}}
+                </p>
+            </ion-item>
+
+            <ion-item class="padding0 noborder pageinitnoresult"
+                      ng-show="data.day.length==0">
+
+                <p class="padding5 color_969696 text-center bg_f0f0f0">{{data.searchday}} &nbsp; 没有收入数据</p>
+
+            </ion-item>
+
+        </ion-list>
+
+        <ion-infinite-scroll
+                ng-if="!page.upNoResultShow()"
+                on-infinite="page.up()"
+                immediate-check="false">
+        </ion-infinite-scroll>
+
+    </ion-content>
+</ion-view>

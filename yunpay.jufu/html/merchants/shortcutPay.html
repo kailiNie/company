@@ -1,0 +1,147 @@
+<ion-view  view-title="快捷支付" class="bg_f0f0f0 ssp-shortcutPay">
+	<ion-nav-buttons side="right">
+	    <a class='ssp-applyBank' href="#/merchants/merchantsCanUserBank">支持银行</a>
+	</ion-nav-buttons>
+  <ion-content>
+
+    <ng-form name="form1" ng-controller="merchantsShortcutPay">
+      <ion-list>
+      	<ion-item class="item-input amount">
+      		<label for="amount">消费总金额(元)</label>
+	        <input
+	        		class="text-right"
+	                type="tel"
+	                class="input-label"
+	                placeholder=""
+	                name="amount"
+	                ng-model="data.user.amount"	  
+	                amount
+	                required>
+        </ion-item>
+        
+        <ion-item class="item-input">
+      		<label for="remark">选填备注</label>
+	        <input
+	        		class="text-right"
+	                type="text"
+	                class="input-label"
+	                placeholder="如房号、服务员号"
+	                name="remark"
+	                ng-model="data.user.remark"	                
+	                >
+        </ion-item>
+        
+        <ion-item class="item-input margin-top-10">
+      		<label for="cardholderName">持卡人</label>
+	        <input
+	        		class="text-right"
+	                type="text"
+	                class="input-label"
+	                placeholder="请填写持卡人姓名"
+	                name="cardholderName"
+	                ng-model="data.user.cardholderName"	                
+	                >
+        </ion-item>
+        
+        <ion-item class="item-input">
+          <label for="idCard">身份证号码</label>
+          <input
+          		  class="text-right"
+                  type="text"
+                  ng-model="data.user.idCard"
+                  name="idCard"
+                  placeholder="请填写身份证号"
+                  idcard
+                  required/>
+        </ion-item>
+      	
+      	<ion-item class="item-input">
+      		<label for="bankCardNo">卡号</label>
+	        <input
+	        		class="text-right"
+	                type="tel"
+	                class="input-label"
+	                placeholder="请填写卡号"
+	                name="bankCardNo"
+	                ng-model="data.user.bankCardNo"	  
+	                ng-blur="fun.showBankInfo()"
+	                required>
+        </ion-item>
+        <!--ng-blur="fun.showBankInfo()"-->        
+        
+        
+        <ion-item class="item-input">          	
+        	<label for="bankCardName">CVV2码</label>
+            <input
+            		class="text-right"
+					placeholder="银行卡背面，后三位"
+                    type="text"
+                    class="input-label"
+                    name="CVV2Code"
+                    ng-model="data.user.CVV2Code"
+                    required>
+        </ion-item>
+      	
+      	
+        <ion-item class="item-input">          	
+        	<label for="bankCardName">有效日期</label>
+            <input
+            		class="text-right"
+					placeholder="如：05/19"
+                    type="text"
+                    class="input-label"
+                    name="effectiveDate"
+                    ng-model="data.user.effectiveDate"
+                    required>
+        </ion-item>
+        
+        <ion-item class="item-input ">
+        	<label for="userPhone">手机号</label>
+          <input
+          	class="text-right"
+            type="tel"
+            ng-model="data.user.userPhone"
+            name="userPhone"
+            placeholder="请输入银行预留手机号"
+            phone
+            required/>
+        </ion-item>        
+		
+
+        <ion-item class="item-input item-button-right">
+        	<label for="phoneCode">验证码</label>
+          <input
+          	class="text-right margin-right"
+            type="tel"
+            ng-model="data.user.phoneCode"
+            name="phoneCode"
+            placeholder="请输入短信验证码"
+            send_phone_code
+            phonecode
+            required/>
+        </ion-item>
+        
+        <ion-item class="item-checkbox noborder spp-arget bg_f0f0f0" >
+
+		  <label class="checkbox">
+		    <input type="checkbox" value="true" ng-model="data.isArget"/>
+		  </label>
+		  <span class="font_color_9e9e9e font_12">同意</span>
+		  <span id="waitingDraw"></span>
+		  <a class="xieyi nodecoration font_12" href="#/merchants/userArget">
+		    《万众云付商家服务协议》
+		  </a>
+		</ion-item>
+        
+      
+        <ion-item class="padding noborder bg_f0f0f0 btn-pagesingle">
+          <button class="button button-block button-assertive"
+                  ng-disabled="!data.isArget"
+                  ng-click="fun.userRegist()">
+           立即付款
+          </button>
+        </ion-item>
+    </ng-form>
+
+  </ion-content>
+</ion-view>

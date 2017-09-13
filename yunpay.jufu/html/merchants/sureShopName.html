@@ -1,0 +1,30 @@
+<ion-view  view-title="入驻成功" class="bg_f0f0f0 ssp-sureShopName">
+    <ion-content>
+
+        <ng-form name="form1" ng-controller="sureShopName">
+            <ion-list>
+
+                <ion-item class="item-input ">
+                	<span class="input-label">店铺名称：</span>
+                    <input	
+                    		placeholder="请输入您的店铺名称"
+                            type="text"
+                            ng-model="data.user.Name"
+                            name="Name"
+                            ccp_input_close
+                            required/>
+                </ion-item>
+				<ion-item class='waringText'>
+					<p>用户扫码支付时，将通过此名称来识别</p>
+				</ion-item>				
+                <ion-item class="padding noborder bg_f0f0f0 btn-pagesingle">
+                    <button class="button button-block button-assertive"
+                            ng-click="fun.save()">
+                        生成收款二维码
+                    </button>
+                </ion-item>
+            </ion-list>
+        </ng-form>
+
+    </ion-content>
+</ion-view>

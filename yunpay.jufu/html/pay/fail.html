@@ -1,0 +1,15 @@
+<ion-view view-title="付款失败" class="fail bg_f0f0f0">
+	<ion-nav-bar class="bar-stable">
+		<ion-nav-back-button ng-show="false">
+
+		</ion-nav-back-button>
+	</ion-nav-bar>
+<ion-content >
+	<img src="img/payfail.jpg?v=1">
+	<div class="wrap bg_fff">
+		<p class="text-center">很抱歉，支付失败！</p>
+		<p class="text-center color_fff">{{data.shopName}}</p>
+    	<button class="button button-block" ng-click="fun.backPay()">返回重新付款</button>
+	</div>
+</ion-content>
+</ion-view>

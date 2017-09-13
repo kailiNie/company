@@ -1,0 +1,63 @@
+<ion-view  view-title="我的评价" class="bg_f0f0f0 hasTitle ssp_comment">
+
+  <ion-header-bar class="bar bar-subheader bar-stable spp_listTitle">
+    <div class="button-bar">
+      <a class="button rb"  ng-click="fun.show(1)" ng-class="{'color_dc4b39':data.showFlag}">全部评价</a>
+      <a class="button"  ng-click="fun.show(0)" ng-class="{'color_dc4b39':!data.showFlag}">待评价</a>
+    </div>
+  </ion-header-bar>
+
+  <ion-content class="has-header myAppraise">
+
+    <ion-list  ng-show="data.showFlag==1">
+      <ion-item class="item item-avatar" ng-repeat="item in data.commentAll">
+        <img ng-src="{{item.shopLogo}}" class="logo">
+        <p class="color_444">{{item.shopName}}</p>
+        <p class="color_a2a2a2 font_12">{{item.createTime}}</p>
+        <p class="color_444 content">{{item.content || '暂无评论内容'}}</p>
+        <p class="status"
+           ng-class="{'color_9ccc65':item.isEnjoy!=2,'color_dc4b39':item.isEnjoy==2}">
+          {{item.isEnjoyString}}
+        </p>
+        <img ng-src="{{child.imageUrl}}" ng-repeat="child in item.imageList " class="appraiseImg"/>
+      </ion-item>
+      <ion-item class="padding0 noborder pageInitNoResult"
+                ng-show="page.commentAll.initNoResultShow()">
+        <p  class="padding5 color_969696 text-center bg_f0f0f0">没有评价数据</p>
+      </ion-item>
+      <ion-item class="padding0 noborder pageUpNoResult"
+                ng-show="(!page.commentAll.initNoResultShow() && page.commentAll.upNoResultShow())">
+        <p  class="padding5 color_969696 text-center bg_f0f0f0">没有更多数据</p>
+      </ion-item>
+    </ion-list>
+
+    <ion-list  ng-show="data.showFlag==0">
+      <ion-item class="item item-avatar"  ng-repeat="item in data.commentImg">
+        <img ng-src="{{item.shopLogo}}"/>
+        <p class="color_444">{{item.shopName}}</p>
+        <p class="color_a2a2a2">{{item.createTime}}</p>
+        <a class="ssp_smallbtn" ng-click="fun.go(item)">去评价</a>
+      </ion-item>
+      <ion-item class="padding0 noborder pageInitNoResult"
+                ng-show="page.commentImg.initNoResultShow()">
+
+        <p  class="padding5 color_969696 text-center bg_f0f0f0">没有待评价数据</p>
+      </ion-item>
+      <ion-item class="padding0 noborder pageUpNoResult"
+                ng-show="(!page.commentImg.initNoResultShow() && page.commentImg.upNoResultShow())">
+
+        <p  class="padding5 color_969696 text-center bg_f0f0f0">没有更多数据</p>
+      </ion-item>
+    </ion-list>
+
+    <ion-infinite-scroll
+            ng-if="!page.commentImg.upNoResultShow()"
+            on-infinite="page.commentImg.up()"
+            immediate-check="false"></ion-infinite-scroll>
+
+    <ion-infinite-scroll
+            ng-if="!page.commentAll.upNoResultShow()"
+            on-infinite="page.commentAll.up()"
+            immediate-check="false"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

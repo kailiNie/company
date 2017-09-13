@@ -1,0 +1,73 @@
+<ion-view view-title="填写商家信息" class="bg_f0f0f0">
+
+  <ion-content>
+
+    <ng-form name="form1" ng-controller="salesettled">
+      <ion-list>
+        <ion-item class="item-input ">
+          <p class="input-label">商家真实姓名</p>
+          <input
+                  type="text"
+                  ng-model="data.user.realName"
+                  name="realName"
+                  placeholder="请输入您的真实姓名"
+                  ccp_input_close
+                  maxlength="12"
+                  required/>
+        </ion-item>
+
+        <ion-item class="item-input">
+          <p class="input-label">身份证号码</p>
+          <input
+                  type="text"
+                  ng-model="data.user.idCard"
+                  name="idCard"
+                  placeholder="请输入您的身份证号码"
+                  ccp_input_close
+                  idcard
+                  required/>
+        </ion-item>
+
+        <ion-item class="item-input">
+          <p class="input-label">身份证正面照</p>
+          <div class="spp-upload"  ngf-select="fun.upload($files,1)">
+            <img ng-src="{{data.user.img1}}">
+            <a ng-show="!data.user.hasImg1" ng-click="fun.showImg(1,$event)">示例</a>
+            <i class="spp-shangchuantupian iconfont"></i>
+            <p>点击上传</p>
+          </div>
+        </ion-item>
+
+        <ion-item class="item-input">
+          <p class="input-label">身份证背面照</p>
+          <div class="spp-upload"  ngf-select="fun.upload($files,2)">
+            <img ng-src="{{data.user.img2}}">
+            <a ng-show="!data.user.hasImg2" ng-click="fun.showImg(2,$event)">示例</a>
+            <i class="spp-shangchuantupian iconfont"></i>
+            <p>点击上传</p>
+          </div>
+        </ion-item>
+
+        <ion-item class="item-input">
+          <p class="input-label">身份证手持照</p>
+          <div class="spp-upload"  ngf-select="fun.upload($files,3)">
+            <img ng-src="{{data.user.img3}}">
+            <a ng-show="!data.user.hasImg3" ng-click="fun.showImg(3,$event)">示例</a>
+            <i class="spp-shangchuantupian iconfont"></i>
+            <p >点击上传</p>
+          </div>
+        </ion-item>
+
+        <ion-item class="item-divider">
+          <p class="color_a2a2a2">证件照不可大于5M,建议尺寸1200*750px</p>
+        </ion-item>
+
+        <ion-item class="padding noborder bg_f0f0f0 btn-pagesingle">
+          <button class="button button-block button-assertive"  ng-click="fun.userRegist()">
+            保存商家信息
+          </button>
+        </ion-item>
+    </ng-form>
+
+  </ion-content>
+</ion-view>

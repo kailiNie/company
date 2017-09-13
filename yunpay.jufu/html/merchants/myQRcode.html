@@ -1,0 +1,14 @@
+<ion-view  view-title="我的二维码" class="bg_f0f0f0 ssp-myQRcode">
+	<ion-nav-buttons side="right">
+    	<span style="line-height: 34px;padding-right: 8px;" ng-click="fun.gomerchantsIndex()">商家中心</span>
+   </ion-nav-buttons>  
+    <ion-content overflow-scroll="true">
+    	
+    	<ion-item class="item-image QRcode"  ng-show="data.qrUrl">
+				<img ng-src="{{data.qrUrl}}"/>
+		</ion-item>
+		<ion-item class="item-divider" ng-show="!data.qrUrl">
+			<p class="color_444 text-center font_18">等待二维码生成中......</p>
+		</ion-item>
+    </ion-content>
+</ion-view>

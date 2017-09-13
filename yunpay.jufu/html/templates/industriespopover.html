@@ -1,0 +1,55 @@
+<ion-popover-view class="cityPopover">
+  <div class="row top">
+    <p>请选择主营业务</p>
+  </div>
+  <div class="row content ssp-popover-city">
+    <div class="col col-33 one ">
+      <div class="swiper-container industriesswiper1">
+        <ul class="swiper-wrapper">
+          <li class="swiper-slide  color_fff">&nbsp;</li>
+          <li class="swiper-slide"
+              ng-repeat="item in popover.industries.data['1'] track by $index"
+              ng-class="{'active':item.Id==popover.industries.selectData['1'].Id}"
+          >
+            {{item.Name}}
+          </li>
+          <li class="swiper-slide color_fff">&nbsp;</li>
+        </ul>
+      </div>
+      <!--<div class="upWaper"></div>-->
+      <!--<div class="downWaper"></div>-->
+    </div>
+    <div class="col col-33 two" >
+      <div class="swiper-container industriesswiper2">
+        <ul class="swiper-wrapper">
+          <li class="swiper-slide color_fff">&nbsp;</li>
+          <li class="swiper-slide"
+              ng-repeat="item in popover.industries.data['2'] track by $index"
+              ng-class="{'active':item.Id==popover.industries.selectData['2'].Id}"
+          >
+            {{item.Name}}
+          </li>
+          <li class="swiper-slide color_fff">&nbsp;</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col col-33 three">
+      <div class="swiper-container industriesswiper3">
+        <ul class="swiper-wrapper">
+          <li class="swiper-slide color_fff">&nbsp;</li>
+          <li class="swiper-slide"
+              ng-repeat="item in popover.industries.data['3'] track by $index"
+              ng-class="{'active':item.Id==popover.industries.selectData['3'].Id}"
+          >
+            {{item.Name}}
+          </li>
+          <li class="swiper-slide color_fff">&nbsp;</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row bottom">
+    <a ng-click="popover.industries.fun().cancel($event)">取消</a>
+    <a ng-click="popover.industries.fun().ok($event)" class="bg_dc4b39">确定</a>
+  </div>
+</ion-popover-view>

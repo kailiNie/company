@@ -1,0 +1,24 @@
+<ion-view  view-title="支持银行" class="bg_f0f0f0 ssp-canUserBank">
+  <ion-content>
+	<ion-list>
+		<ion-item class = 'waringText'>
+			*快捷支付，目前只支持信用卡
+		</ion-item>
+		<ion-item ng-repeat="item in bankList" class='bankCard'>
+			<div class="border">
+				<div class="icon">
+					<img ng-src="{{item.src}}"/>
+				</div>
+				<div class="content">
+					<div class="bankName">
+						{{item.bankName}}
+					</div>
+					<div class="limit">
+						单笔限额2万，单日限额5万
+					</div>
+				</div>
+			</div>
+		</ion-item>
+	</ion-list>
+  </ion-content>
+</ion-view>

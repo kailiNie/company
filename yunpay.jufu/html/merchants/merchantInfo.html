@@ -1,0 +1,40 @@
+<ion-view  view-title="填写商家信息" class="bg_f0f0f0 spp-merchantInfo">
+    <ion-content>
+
+        <ng-form name="form1" ng-controller="merchantInfo">
+            <ion-list>
+
+                <ion-item class="item-input ">
+                    <input
+                    		placeholder="请输入商家真实姓名"
+                            type="text"
+                            ng-model="data.user.Name"
+                            name="Name"
+                            ccp_input_close
+                            required/>
+                </ion-item>
+
+                <ion-item class="item-input">
+                    <input
+                    		placeholder="请输入商家身份证"
+                            type="text"
+                            ng-model="data.user.idcard"
+                            name="idcard"
+                            ccp_input_close
+                            idcard
+                            required/>
+                </ion-item>
+                <ion-item class='waringText'>
+                	<p>请填写真实信息，以便以后寻回密码</p>
+                </ion-item>				
+                <ion-item class="padding noborder bg_f0f0f0 btn-pagesingle">
+                    <button class="button button-block button-assertive"
+                            ng-click="fun.save()">
+                        本人确定以上信息属实
+                    </button>
+                </ion-item>
+            </ion-list>
+        </ng-form>
+
+    </ion-content>
+</ion-view>

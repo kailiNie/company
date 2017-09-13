@@ -1,0 +1,119 @@
+<ion-view  view-title="扫码收款" class="bg_f0f0f0 hasTitle ssp_scanCodeCenter">
+
+	<ion-header-bar class="bar bar-subheader bar-stable spp_listTitle">
+		<div class="button-bar">
+			<a class="button rb"  ng-click="fun.show(1)" ng-class="{'color_dc4b39':data.showFlag==1}">二维码收款</a>
+			<a class="button"  ng-click="fun.show(0)" ng-class="{'color_dc4b39':data.showFlag==0}">扫一扫收款</a>
+			
+		</div>
+	</ion-header-bar>
+
+	<ion-content class="has-header" overflow-scroll="true" has-bouncing="false">
+
+		<!--<ion-list ng-show="data.showType==1">changshop
+
+			<ion-item class="item-divider row ssp-search ">
+
+				<p class="col col-80 item-select ">
+					<span class="color_3d3d3d">当前收款店铺:</span>
+					<select
+							class="ssp-select"
+							name="bank"
+							ng-model="data.checkShop"
+							ng-change="fun.changshop()"
+							ng-options="m.name for m in data.shop"
+					>
+					</select>
+				</p>
+				<a
+						class="col col-20 font_14 color_f0f0f0 text-right dateText">
+					&nbsp;
+				</a>
+			</ion-item>
+
+		</ion-list>-->
+
+		<ion-list class='full-img-list has_subheader' ng-show="data.showFlag==1">
+
+			<ion-item class="item-image full-img-item"  ng-show="data.qrUrl">
+				<img class="full-img" ng-src="{{data.qrUrl}}"/>
+			</ion-item>
+			<ion-item class="item-divider" ng-show="!data.qrUrl">
+				<p class="color_444 text-center font_18">店铺暂无收款二维码</p>
+			</ion-item>
+
+		</ion-list>
+
+		<ion-list  ng-show="data.showFlag==0">
+
+			<ion-item class="item-amount item-input">
+
+				<input
+						type="text"
+						id="amount"
+						class="input-hidde"
+						ng-model="data.amount"
+						disabled="disabled"
+						placeholder="请输入收款金额"
+						autofocus
+				/>
+				
+			</ion-item>
+
+			<ion-item class="item-divider">
+				<p class="text-right color-444">输入金额请与客户确认后，再按收款</p>
+				<input type="hidden" id="waitingDraw"/>
+			</ion-item>
+
+		</ion-list>
+
+		<div class="keyboard-waper" ng-show="data.showFlag==0">
+			<div class="keyboard-tips">
+				<p class="upText">
+					请提醒顾客打开
+					<img src="img/yesIcon.png"/>
+					<span>微信</span>
+					付款二维码
+				</p>
+				<p class="red-underline" ng-click="fun.showCourse()" id="showCourse">查看详情教程</p>
+			</div>
+			<div class="keyboard">
+				<div class="row rowOne">
+					<div class="col col-25">
+						<div class="col col-100 keyboardOne" ng-click="fun.addAmount(1)">1</div>
+						<div class="col col-100 keyboardFour" ng-click="fun.addAmount(4)">4</div>
+					</div>
+					<div class="col col-25">
+						<div class="col col-100 keyboardTwo" ng-click="fun.addAmount(2)">2</div>
+						<div class="col col-100 keyboardFive" ng-click="fun.addAmount(5)">5</div>
+					</div>
+					<div class="col col-25">
+						<div class="col col-100 keyboardThree" ng-click="fun.addAmount(3)">3</div>
+						<div class="col col-100 keyboardSix" ng-click="fun.addAmount(6)">6</div>
+					</div>
+					<div class="col col-25 btn-clear" ng-click="fun.addAmount(12)">
+						<img src="img/clearall.png"/>
+					</div>
+				</div>
+				<div class="row rowTwo">
+					<div class="col col-25">
+						<div class="col col-100 keyboardSeven" ng-click="fun.addAmount(7)">7</div>
+						<div class="col col-100 keyboardZero" ng-click="fun.addAmount(0)">0</div>
+					</div>
+					<div class="col col-25">
+						<div class="col col-100 keyboardEight" ng-click="fun.addAmount(8)">8</div>
+						<div class="col col-100 keyboardDZero" ng-click="fun.addAmount(10)">00</div>
+					</div>
+					<div class="col col-25">
+						<div class="col col-100 keyboardNine" ng-click="fun.addAmount(9)">9</div>
+						<div class="col col-100 keyboardPoint" ng-click="fun.addAmount(11)">.</div>
+					</div>
+					<div class="col col-25 btn-sure" ng-click="fun.save()">
+						<p>确认<br/>收款</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</ion-content>
+</ion-view>

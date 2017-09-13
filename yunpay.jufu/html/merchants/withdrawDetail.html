@@ -1,0 +1,38 @@
+<ion-view view-title="提现详情" class="bg_f0f0f0 ssp_success">
+	<ion-content>
+		<div class="head sellersuccess">
+			<div class="desc">
+				<p class="text-center">
+					{{data.withdrawalStatusName}}</p>
+			</div>
+		</div>
+		<ion-list>
+			<ion-item class="noborder">
+				<span class="text-left">提现方式</span>
+	      <span class="item-note color_a2a2a2">
+	        {{data.bankName}}
+	      </span>
+			</ion-item>
+			<ion-item class="noborder">
+				<span class="text-left">提现时间</span>
+	      <span class="item-note color_a2a2a2">
+	        {{data.withdrawalDateTime}}
+	      </span>
+			</ion-item>
+			<ion-item class="noborder">
+				<span class="text-left">提现状态</span>
+	      <span class="item-note color_a2a2a2">
+
+		  {{data.withdrawalStatusName}}
+	      </span>
+			</ion-item>
+			<ion-item class="noborder">
+				<span class="text-left">提现金额</span>
+	      <span class="item-note color_a2a2a2">
+	        ￥{{data.amount | number:'2'}}
+	      </span>
+			</ion-item>
+		</ion-list>
+
+	</ion-content>
+</ion-view>

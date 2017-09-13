@@ -1,0 +1,41 @@
+<ion-view  view-title="账单明细" class="bg_f0f0f0">
+  <ion-content class="padding-top ssp_clerklist">
+    <ion-list >
+      <ion-item ng-repeat="item in data.sale"
+                ng-click="fun.go(item.id)"
+      >
+
+        <div class="row">
+          <p class="color_a2a2a2 text-left col col-33">{{fun.common.getday(item.payDateTime)}}</p>
+          <p class="color_444 text-right col col-33 font_18">{{item.amount | number:2}}</p>
+          <p class="color_dc4b39 text-right col col-33">{{item.statusName}}</p>
+        </div>
+        <div class="row">
+          <p class="color_a2a2a2 text-left col col-33">{{fun.common.getTime(item.payDateTime)}}</p>
+          <p class="color_a2a2a2 text-right col col-33">{{item.shopName}}</p>
+        </div>
+
+      </ion-item>
+
+
+      <ion-item class="padding0 noborder pageInitNoResult"
+                ng-show="page.initNoResultShow()">
+
+        <p  class="padding5 color_969696 text-center bg_f0f0f0">没有账单明细数据</p>
+
+      </ion-item>
+
+      <ion-item class="padding0 noborder pageUpNoResult"
+                ng-show="(!page.initNoResultShow() && page.upNoResultShow())">
+
+        <p  class="padding5 color_969696 text-center bg_f0f0f0">没有更多数据</p>
+
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll
+            ng-if="!page.upNoResultShow()"
+            on-infinite="page.up()"
+            immediate-check="false"></ion-infinite-scroll>
+
+  </ion-content>
+</ion-view>

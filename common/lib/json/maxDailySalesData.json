@@ -1,0 +1,9 @@
+{"flag":true,"data":{
+  "2000":{"data":{"Name":"小于2，000","IsEnd":true}},
+  "10000":{"data":{"Name":"2,000~10,000","IsEnd":true}},
+  "50000":{"data":{"Name":"10,000~50,000","IsEnd":true}},
+  "100000":{"data":{"Name":"50,000~100,000","IsEnd":true}},
+  "200000":{"data":{"Name":"100,000~200,000","IsEnd":true}},
+  "500000":{"data":{"Name":"200,000~500,000","IsEnd":true}},
+  "1000000":{"data":{"Name":"500,000~1,000,000","IsEnd":true}}
+}}

@@ -1,0 +1,39 @@
+<ion-view view-title="银行卡详情" class="myCards-box bank bg_f0f0f0">
+    <ion-nav-buttons side="right">
+        <i class="icon ion-android-add"
+           style="font-size:28px;padding-top:2px;padding-right:10px;"
+           ng-click="fun.addCard()"></i>
+    </ion-nav-buttons>
+    <ion-content class="padding-top">
+        <!--有银行卡时/-->
+        <ion-list>
+            <ion-item
+                    class="bankCardWapper">
+                <div class="bgicon">
+                    <span class="iconfont {{data.desc.icon}}"></span>
+                </div>
+                <div class="bankCard {{item.desc.bgColor||'bank_436bb0'}}">
+                    <div class="iconLeft">
+                        <i class="iconfont {{data.desc.icon}}"></i>
+                    </div>
+
+                    <div class="bankText">
+                        <p class="font_18 font_bold">{{data.bankCardName}}(尾号:{{data.bankCardNo}})</p>
+                        <p>创建时间:{{data.createTime}}</p>
+                        <!--<p class="font_12">&nbsp; {{data.fullName}}</p>-->
+                        <!--<p class="font_12">&nbsp; {{data.CardholderName}}</p>-->
+                        <p class="font_24 margin-top-10 text-left font_bold">
+                            <!--<span class="cardNo">**** **** **** </span>-->
+                            <!--{{data.bankCardNo}}-->
+                        </p>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+        <!--有银行卡时/-->
+
+        <div class="row addCard-btn">
+            <button class="button button-block bg_dc4b39" ng-click="fun.save()">解除绑定</button>
+        </div>
+    </ion-content>
+</ion-view>

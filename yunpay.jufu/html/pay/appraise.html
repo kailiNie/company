@@ -1,0 +1,72 @@
+
+<ion-view view-title="我的评价" class="spp_appraise bg_f0f0f0">
+    <ion-nav-bar class="bar-stable">
+        <ion-nav-back-button ng-show="false">
+        </ion-nav-back-button>
+
+        <!--<ion-nav-buttons side="right" >
+            <a class="button noborder" ng-click="fun.showmore($event)">
+                更多
+            </a>
+        </ion-nav-buttons>-->
+    </ion-nav-bar>
+    <ion-content>
+        <ion-list>
+            <ion-item class="item-image noborder">
+                <img src="img/appraiseBg.jpg" >
+                <p class="text-center headtxt" ng-show="data.commentTotal>0">您是第<span>{{data.commentTotal}}</span>个在本店表达态度的人。</p>
+                <p class="text-center headtxt" style="top: 7px;" ng-show="data.orderCommentScore>0">马上评价可以获得{{data.orderCommentScore}}积分</p>
+            </ion-item>
+            <ion-item class="noborder" style="padding-bottom: 0px;">
+                <p class="text-center">
+                    亲,感觉这家
+                    <span class="color_dc4b39">{{data.shopName}}</span>
+                    店怎么样?</p>
+            </ion-item>
+            <ion-item class="noborder row appstatus">
+                <div class="ok col col-33"
+                     ng-click="fun.show(1)"
+                     ng-class="{'active':data.user.enjoyStatus==1}">
+                    <a class="bg smile"></a>
+                    <p>感觉棒棒哒</p>
+                </div>
+                <div class="fail col col-33"
+                     ng-click="fun.show(0)"
+                     ng-class="{'active':data.user.enjoyStatus==0}">
+                    <a class="bg center"></a>
+                    <p>一般</p>
+                </div>
+                <div class="fail col col-33"
+                     ng-click="fun.show(2)"
+                     ng-class="{'active':data.user.enjoyStatus==2}">
+                    <a class="bg cry"></a>
+                    <p>宝宝心里苦</p>
+                </div>
+            </ion-item>
+            <ion-item class="item noborder" style="padding-top: 0px;">
+                <div class="appContent">
+                    <textarea ng-model="data.user.content" placeholder={{data.user.showStatusText}}></textarea>
+                    <div class="upImgWaper">
+                        <img class="upImg" ng-src="{{item.imageUrl}}" ng-repeat="item in data.user.imgList">
+                        <img src="img/camera.jpg" ngf-select="fun.upload($files,1)">
+                    </div>
+                    <p>最多只可上传4张图片</p>
+                </div>
+            </ion-item>
+            <ion-item class="item-checkbox noborder spp-arget" >
+
+                <label class="checkbox">
+                    <input type="checkbox" value="true" ng-model="data.user.isAnonymity"/>
+                </label>
+                <span class="font_color_9e9e9e font_12">匿名评论</span>
+            </ion-item>
+            <ion-item class="padding noborder bg_f0f0f0 btn-pagesingle">
+                <button class="button button-block button-assertive"
+                        ng-disabled="data.user.enjoyStatus<0"
+                        ng-click="fun.go()">
+                    确认发表
+                </button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

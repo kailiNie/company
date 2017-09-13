@@ -1,0 +1,70 @@
+<ion-view view-title="提现详情" class="bg_f0f0f0 withdraw">
+	<ion-content>
+		
+		<div class="header">
+			<div class="withdraw_img text-center {{data.withdrawbgc}}">
+				<img class="icon1" src="img/withdraw-icon1.png"/>
+				<img class="withdraw-statu" src="{{data.statuimg}}"/>
+				<img class="icon2" src="img/withdraw-icon2.png"/>
+				<p class="text-center">{{data.statutext}}</p>
+			</div>
+		</div>
+		
+		<ion-list>
+			<ion-item class="noborder" ng-show="data.type==1">
+				<span class="text-left">提现方式</span>
+			      <span class="item-note color_a2a2a2">
+			        微信
+			      </span>
+			</ion-item>
+			<ion-item class="noborder" ng-show="data.type==2">
+				  <span class="text-left">提现方式</span>
+			      <span class="item-note color_a2a2a2">
+			        {{data.bankName}}({{data.bankCardNo}})
+			      </span>
+			</ion-item>
+			<ion-item class="noborder">
+				<span class="text-left">提现{{data.apply}}时间</span>
+	     		<span class="item-note color_a2a2a2">
+	       			{{data.withdrawalDateTime}}
+	      		</span>
+			</ion-item>
+			<ion-item class="noborder" ng-if='data.casharriveDateTimestatu'>
+				<span class="text-left">到账时间</span>
+	      		<span class="item-note color_a2a2a2">
+		  			{{data.casharriveDateTime}}
+	     		 </span>
+			</ion-item>
+			<ion-item class="noborder">
+				<span class="text-left">提现状态</span>
+	      		<span class="item-note color_a2a2a2">
+		  			{{data.withdrawalStatusName}}
+	     		 </span>
+			</ion-item>
+			<ion-item class="noborder" ng-if="data.drawbackReasonstatu">
+				<span class="text-left">退款原因</span>
+	      		<span class="item-note color_a2a2a2">
+		  			{{data.drawbackReason}}
+	     		 </span>
+			</ion-item>
+			<ion-item class="noborder">
+				<span class="text-left">提现金额</span>
+		      	<span class="item-note color_a2a2a2">
+		        	￥{{data.withdrawalAmount | number:'2'}}
+		    	</span>
+			</ion-item>
+			<ion-item class="noborder">
+				<span class="text-left">{{data.settlementMode}}手续费</span>
+		      	<span class="item-note color_a2a2a2">
+		        	￥{{data.poundage | number:'2'}}
+		    	</span>
+			</ion-item>
+			<ion-item class="noborder">
+				<span class="text-left">实际到账金额</span>
+		      	<span class="item-note color_a2a2a2">
+		        	￥{{data.amount | number:'2'}}
+		    	</span>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

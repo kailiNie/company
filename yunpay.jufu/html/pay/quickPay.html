@@ -1,0 +1,38 @@
+<ion-view class="quickPay bg_f0f0f0" view-title="商家名称" >
+    <ion-nav-bar class="bar-stable">
+    </ion-nav-bar>
+    <ion-content>
+    		<div class="row item item-input payInput height80">
+            <div class="col col-30">
+                消费总金额（元）
+            </div>
+             <div class="col col-70">
+                <input type="text" style="text-align: right;" placeholder="消费总金额" />
+            </div>
+    		</div>
+    		<div class="row item item-input payInput height60">
+            <div class="col col-30">
+                选题备注
+            </div>
+             <div class="col col-70">
+                <input type="text" style="text-align: right;" placeholder="如房号 服务员号" />
+            </div>
+        	
+    		</div>
+
+    		<div  class="text-center input_model70">
+            	<label  class="font_18 color_CBCBCB">使用招商银行支付，<a class="color_52aaf1" href="">更换</a></label>	
+    		</div>
+
+    		<div  class="text-center input_model70 margin-top60" >
+    			<button class="button button-assertive width100" ng-click='saves($event)'>立即买单</button>
+    		</div>
+
+    		<div class=" text-center margin-top20">
+            	<label class="color_CBCBCB font_12">单笔交易上限3万,收款时间7点~22点	</label>
+    		</div>
+
+    <!-- 		<div id='backList' style="position: absolute;top: 20%;left: 50%;transform: translate(20%,-50%);"></div> -->
+<!--         </div> -->
+    </ion-content>
+</ion-view>

@@ -1,0 +1,40 @@
+<ion-view view-title="{{data.title}}" class="payInfo bg_f0f0f0">
+	<ion-content >
+		<div class="wrap">
+			<div class="list">
+				<label class="item item-input">
+					<span class="input-label">消费总金额(元)</span>
+					<input
+							type="tel"
+							ng-model="data.user.Amount"
+							name="amount"
+							ccp_input_close
+							amount
+							required/>
+				</label>
+			</div>
+			<!--<div class="list">-->
+			<!--<label class="item item-input">-->
+			<!--<span class="input-label">减免金额</span>-->
+			<!--<input type="text" placeholder="积分抵现XX元">-->
+			<!--</label>-->
+			<!--</div>-->
+			<div class="list">
+				<label class="item item-input">
+					<span class="input-label">选填备注</span>
+					<input
+							type="text"
+							placeholder="如房号、服务员号"
+							ng-model="data.user.Remarks"
+							name="Remarks"
+							maxlength="50"
+							ccp_input_close
+					/>
+				</label>
+			</div>
+			<p>实付金额(元)<span>￥{{data.user.Amount | number:2}}</span></p>
+			<button ng-click="fun.go()" class="button button-block">和店员已确认，立即买单</button>
+		</div>
+
+	</ion-content>
+</ion-view>

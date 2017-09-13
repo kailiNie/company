@@ -1,0 +1,78 @@
+<ion-view  view-title="积分明细" class="bg_f0f0f0 hasTitle">
+  <ion-header-bar class="bar bar-subheader bar-stable spp_listTitle">
+    <div class="button-bar">
+      <a class="button rb"  ng-click="fun.show(1)" ng-class="{'color_dc4b39':data.showFlag}">收入</a>
+      <a class="button"  ng-click="fun.show(0)" ng-class="{'color_dc4b39':!data.showFlag}">支出</a>
+    </div>
+  </ion-header-bar>
+
+  <ion-content class="has-header">
+
+    <ion-list  ng-show="data.showFlag" class="ssp_clerklist ">
+      <ion-item class="item-divider">
+        <p><span>每日积分上限5000</span></p>
+      </ion-item>
+      <ion-item  ng-repeat="item in data.in">
+        <div class="row">
+          <p class="color_a2a2a2 text-left col col-35">{{fun.common.getday(item.createTime)}}</p>
+          <p class="color_444 text-right col col-45 font_18">+{{item.score}}</p>
+          <p class="text-right col col-20"  ng-class="{'color_dc4b39':item.type==1,'color_9ccc65':item.type!=1}">{{item.typeName}}</p>
+        </div>
+        <div class="row">
+          <p class="color_a2a2a2 text-left col col-35">{{fun.common.getTime(item.createTime)}}</p>
+          <p class="color_a2a2a2 text-right col col-45">积分余额:{{item.totalScore }}</p>
+        </div>
+      </ion-item>
+      <ion-item class="padding0 noborder pageInitNoResult"
+                ng-show="page.in.initNoResultShow()">
+
+        <p  class="padding5 color_969696 text-center bg_f0f0f0">没有积分收入数据</p>
+
+      </ion-item>
+
+      <ion-item class="padding0 noborder pageUpNoResult"
+                ng-show="(!page.in.initNoResultShow() && page.in.upNoResultShow())">
+
+        <p  class="padding5 color_969696 text-center bg_f0f0f0">没有更多数据</p>
+
+      </ion-item>
+    </ion-list>
+
+    <ion-list  ng-show="!data.showFlag" class="ssp_clerklist ">
+      <ion-item class="item-divider">
+        <p><span>每日积分上限5000</span></p>
+      </ion-item>
+      <ion-item  ng-repeat="item in data.out">
+        <div class="row">
+          <p class="color_a2a2a2 text-left col col-35">{{fun.common.getday(item.createTime)}}</p>
+          <p class="color_444 text-right col col-45 font_18">-{{item.score}}</p>
+          <p class="text-right col col-20"  ng-class="{'color_dc4b39':item.type==1,'color_9ccc65':item.type!=1}">{{item.typeName}}</p>
+        </div>
+        <div class="row">
+          <p class="color_a2a2a2 text-left col col-35">{{fun.common.getTime(item.createTime)}}</p>
+          <p class="color_a2a2a2 text-right col col-45">积分余额:{{item.totalScore }}</p>
+        </div>
+      </ion-item>
+      <ion-item class="padding0 noborder pageInitNoResult"
+                ng-show="page.out.initNoResultShow()">
+        <p  class="padding5 color_969696 text-center bg_f0f0f0">没有积分支出数据</p>
+
+      </ion-item>
+
+      <ion-item class="padding0 noborder pageUpNoResult"
+                ng-show="(!page.out.initNoResultShow() && page.out.upNoResultShow())">
+
+        <p  class="padding5 color_969696 text-center bg_f0f0f0">没有更多数据</p>
+
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll
+            ng-if="!page.out.upNoResultShow()"
+            on-infinite="page.out.up()"
+            immediate-check="false"></ion-infinite-scroll>
+    <ion-infinite-scroll
+            ng-if="!page.in.upNoResultShow()"
+            on-infinite="page.in.up()"
+            immediate-check="false"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

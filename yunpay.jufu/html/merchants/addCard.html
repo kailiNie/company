@@ -1,0 +1,53 @@
+<ion-view  view-title="添加银行卡" class="bg_f0f0f0">
+
+    <ion-content ng-controller="merchantsaddCard">
+
+        <ion-list ng-show="!data.hasPwd">
+            <ion-item class="bg_f0f0f0 text-center noborder">
+                <p>绑定银行卡需要安全密码,</p>
+                <a href="#/merchants/setPassword/1">点击设置安全密码</a>
+            </ion-item>
+        </ion-list>
+
+        <ng-form name="form1" ng-show="data.hasPwd">
+            <ion-list>
+                <ion-item class="item-input ">
+                    <input
+                            type="text"
+                            class="input-label"
+                            placeholder="请输入持卡人姓名"
+                            name="fullName"
+                            ng-model="data.fullName"
+                            required>
+                </ion-item>
+
+                <ion-item class="item-input">
+                    <input
+                            type="tel"
+                            class="input-label"
+                            placeholder="请输入银行卡卡号"
+                            name="bankCardNo"
+                            ng-model="data.bankCardNo"
+                            ng-blur="fun.showBankInfo()"
+                            required>
+                </ion-item>
+
+                <ion-item class="item-input">
+                    <p style="width:100%;max-width:100%;" class="input-label color_a2a2a2">{{data.bankCardName}}</p>
+                </ion-item>
+                <ion-item class="item-input item-icon-right" ng-click="popover.city.fun().showDialog($event)">
+                    <p class="input-label color_a2a2a2">{{data.cityText}}</p>
+                    <i class="icon iconfont ion-ios-arrow-right color_a2a2a2"></i>
+                </ion-item>
+                <ion-item class="bg_f0f0f0 noborder"></ion-item>
+                <ion-item class="padding noborder bg_f0f0f0 btn-pagesingle">
+                    <button class="button button-block button-assertive"
+                            ng-click="fun.addCardSubmit($event)">
+                        绑定
+                    </button>
+                </ion-item>
+        </ng-form>
+    </ion-content>
+
+
+</ion-view>

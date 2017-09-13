@@ -1,0 +1,79 @@
+<ion-view  view-title="销售明细" class="bg_f0f0f0">
+  <ion-content class="padding-top ssp_clerklist">
+    <ion-list >
+      <!-- <ion-item class="item-divider row ssp-search " style="margin-bottom: 5px;margin-top: 5px;" >
+
+        <p class="col col-50 item-select ">
+          <select
+                  class="ssp-select"
+                  name="bank"
+                  ng-model="data.checkShop"
+                  ng-change="fun.changshop()"
+                  ng-options="m.name for m in data.shop"
+          >
+            <option value="">所有店铺</option>
+          </select>
+        </p>
+        <a
+                class="col col-50 font_14 color_dc4b39 text-right dateText"
+                ng-click="fun.showDate($event)">
+          {{data.searchday?data.searchday:'<查询>'}}
+        </a>
+
+      </ion-item>
+
+     <ion-item class="item-divider row ssp-search " style="margin-bottom: 5px;margin-top: 5px;" ng-if="data.type!='10'">
+
+        <p class="col col-50 item-select ">
+          <select
+                  class="ssp-select"
+                  name="bank"
+          >
+            <option value="">{{data.shopName}}</option>
+          </select>
+        </p>
+
+        <a class="col col-50 font_14 color_dc4b39 text-right dateText">
+          {{data.waringText}}
+        </a>
+
+      </ion-item>-->
+
+      <ion-item
+              ng-repeat="item in data.data"
+              ng-click="fun.goDetail(item.id)"
+      >
+
+        <div class="row">
+          <p class="color_a2a2a2 text-left col col-33">{{fun.common.getday(item.payDateTime)}}</p>
+          <p class="color_444 text-right col col-33">{{item.amount | number:2}}</p>
+        </div>
+        <div class="row">
+          <p class="color_a2a2a2 text-left col col-33">{{fun.common.getTime(item.payDateTime)}}</p>
+          <p class="color_dc4b39 text-right col col-33">{{item.orderTypeName}}</p>
+          <p class="color_9ccc65 text-right col col-33">{{data.shopName}}</p>
+        </div>
+
+      </ion-item>
+
+      <ion-item class="padding0 noborder pageInitNoResult"
+                ng-show="page.initNoResultShow()">
+
+        <p class="padding5 color_969696 text-center bg_f0f0f0">{{data.searchday}} 没有销售明细数据</p>
+
+      </ion-item>
+
+      <ion-item class="padding0 noborder pageUpNoResult"
+                ng-show="(!page.initNoResultShow() && page.upNoResultShow())">
+
+        <p class="padding5 color_969696 text-center bg_f0f0f0">没有更多数据</p>
+
+      </ion-item>
+
+    </ion-list>
+    <ion-infinite-scroll
+            ng-if="!page.upNoResultShow()"
+            on-infinite="page.up()"
+            immediate-check="false"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

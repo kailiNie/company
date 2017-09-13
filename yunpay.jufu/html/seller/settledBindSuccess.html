@@ -1,0 +1,60 @@
+<ion-view view-title="绑定成功" class="ssp_success">
+    <ion-content>
+        <div class="head sellersuccess">
+            <div class="desc">
+                <p class="text-center">恭喜，绑定成功</p></div>
+        </div>
+
+        <ion-list ng-show="data.type==0">
+            <ion-item class="padding noborder btn-pagesingle" style="padding-bottom: 0px;">
+                <button class="button button-block button-assertive" ng-click="fun.go()">
+                    扫一扫
+                </button>
+            </ion-item>
+            <ion-item class="noborder " style="padding-top: 0px;padding-bottom: 0px;">
+                <div class="row">
+                    <div class="col col-50">
+
+                        <button
+                                ng-click="fun.setPwd()"
+                                class="button button-block bg_9ccc65 color_fff">设置安全密码</button>
+                    </div>
+
+                    <div class="col col-50">
+
+                        <button
+                                ng-click="fun.goCent()"
+                                class="button button-block bg_a2a2a2 color_fff">暂不设置</button>
+                    </div>
+                </div>
+            </ion-item>
+            <ion-item class="noborder">
+
+                <p class="text-center">您现在可以设置安全密码,保护账户资金安全</p>
+            </ion-item>
+        </ion-list>
+
+        <ion-list ng-show="data.type==1">
+
+            <ion-item class="noborder " style="padding-top: 0px;padding-bottom: 0px;">
+                <div class="row">
+                    <div class="col col-50">
+                        <button class="button button-block button-assertive" ng-click="fun.go()">
+                            扫一扫
+                        </button>
+                    </div>
+
+                    <div class="col col-50">
+                        <button class="button button-block button-assertive bg_51abf0" ng-click="fun.goCent()">
+                            商家中心
+                        </button>
+                    </div>
+                </div>
+            </ion-item>
+            <ion-item class="noborder">
+                <p class="text-center">您可继续扫描绑定分店二维码,或去商家中心</p>
+            </ion-item>
+        </ion-list>
+
+    </ion-content>
+</ion-view>

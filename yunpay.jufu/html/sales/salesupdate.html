@@ -1,0 +1,34 @@
+<ion-view  view-title="修改费率" class="bg_f0f0f0">
+
+    <ion-content class="padding-top merchants setCenter-box" ng-controller="salesupdate">
+        <ng-form name="form1">
+            <ion-list>
+
+                <ion-item class="item-input">
+                    <p class="input-label">D0费率</p>
+                    <input type="text"
+                           class="input-label"
+                           placeholder="请输入费率"
+                           name="cashInRateT0"
+                           ng-model="data.cashInRateT0"
+                           required>
+                </ion-item>
+                <ion-item class="item-input">
+                    <p class="input-label">D1费率</p>
+                    <input type="text"
+                           class="input-label"
+                           placeholder="请输入费率"
+                           name="cashInRateT1"
+                           ng-model="data.cashInRateT1"
+                           required>
+                </ion-item>
+                <ion-item class="padding noborder bg_f0f0f0 btn-pagesingle">
+                    <button class="button button-block button-assertive" ng-click="fun.save()">
+                        确定
+                    </button>
+                </ion-item>
+            </ion-list>
+
+        </ng-form>
+    </ion-content>
+</ion-view>

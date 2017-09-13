@@ -1,0 +1,38 @@
+<!--更新业务员-->
+<ion-popover-view class="setCenterModal">
+	<ion-content>
+		<div class="back-drop" ng-click="fun.hidePopoverT()"></div>
+		<div class="modalContent">
+			<div class="title">
+				业务员邀请码
+			</div>
+			<div class="contentText">
+				<ion-list>
+					<ion-item class="item-input">
+			          <input
+			          	class="margin-left"
+			            type="text"
+			            ng-model="user.invitationCode"
+			            placeholder="请填写邀请码"
+			            ccp_input_close/>
+			        </ion-item>
+				</ion-list>
+			</div>
+			<div class="btn_sure row">
+				<div class="col col-50">
+					<botton class="button button-block button-light" ng-click="fun.hidePopoverT()">
+						取消
+					</botton>
+					
+				</div>
+				<div class="col col-50">
+					<botton class="button button-block button-light color_0091ec" ng-click="fun.postCode()">
+						确定
+					</botton>
+					
+				</div>
+				
+			</div>
+		</div>
+	</ion-content>
+</ion-popover-view>

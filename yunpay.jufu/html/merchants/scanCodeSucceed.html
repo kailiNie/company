@@ -1,0 +1,37 @@
+<ion-view view-title="收款成功" class="ssp-scanCodeSucceed bg_f0f0f0">
+	<ion-content>
+		<ion-list>
+			<div class="division-bar-30"></div>
+			<div class="content">
+				<img class="succeedIcon" src="img/succeedIcon.png"/>
+				<div class="text firstText">
+					<p class="left">应收金额：</p>
+					<p class="right">￥：<span>{{data.amount | number:2}}</span></p>
+				</div>
+				<div class="text">
+					<p class="left">实收金额：</p>
+					<p class="right">￥：<span>{{data.amount | number:2}}</span></p>
+				</div>
+				<!--<div class="text">
+					<p class="left">消费者：</p>
+					<p class="right">哭脸宝</p>
+					<img class="userIcon" src="img/cry.jpg"/>
+				</div>-->
+			</div>
+			<ion-item class="padding noborder bg_f0f0f0 btn-full red-btn">
+                <button class="button button-block button-assertive"
+                        ng-click="fun.goscanCodeCenter()">
+                    		返回收款页
+                </button>
+            </ion-item>
+
+            <ion-item class="padding noborder bg_f0f0f0 btn-full blue-btn">
+                <button class="button button-block border-blue"
+                        ng-click="fun.goDetail()">
+                    		查看流水
+                </button>
+            </ion-item>
+
+		</ion-list>
+	</ion-content>
+</ion-view>

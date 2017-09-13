@@ -1,0 +1,74 @@
+<ion-view  view-title="申请入驻商家" class="bg_f0f0f0">
+    <ion-content>
+
+        <ng-form name="form1" ng-controller="sellerregisterapply">
+            <ion-list ng-show="data.showFlag==1">
+                <ion-item class="row-no-padding">
+                    <p class="showAll text-center color_fff bg_9ccc65 font_12" style="padding: 5px;">我们将会在收到您申请后的三个工作日内,请相关工作人员联系您.</p>
+                </ion-item>
+                <ion-item class="item-divider null"></ion-item>
+
+                <ion-item class="item-input ">
+                    <input
+                            type="text"
+                            ng-model="data.user.Name"
+                            name="Name"
+                            placeholder="*请输入您的姓名"
+                            ccp_input_close
+                            required/>
+                </ion-item>
+
+                <ion-item class="item-input">
+                    <input
+                            type="tel"
+                            ng-model="data.user.PhoneNumber"
+                            name="PhoneNumber"
+                            placeholder="*请输入您手机号"
+                            ccp_input_close
+                            phone
+                            required/>
+                </ion-item>
+
+                <ion-item class="item-input">
+                    <input
+                            type="text"
+                            ng-model="data.user.Address"
+                            name="Address"
+                            placeholder="*请填写您的地址,方便我们上门为您服务"
+                            ccp_input_close
+                            required/>
+                </ion-item>
+
+                <ion-item class="item-input">
+                    <input
+                            type="tel"
+                            ng-change="fun.change()"
+                            ng-model="data.user.ReferrerPhoneNumber"
+                            name="ReferrerPhoneNumber"
+                            placeholder="请输入推荐您入驻的商家手机号"
+                            ccp_input_close/>
+                </ion-item>
+
+                <ion-item class="item-divider">
+                    <p class="color_dc4b39">{{data.shopName}}</p>
+                </ion-item>
+
+                <ion-item class="padding noborder bg_f0f0f0 btn-pagesingle">
+                    <button class="button button-block button-assertive"
+                            ng-click="fun.save()">
+                        确认信息提交
+                    </button>
+                </ion-item>
+            </ion-list>
+
+            <div class="ssp_success" ng-show="data.showFlag==2">
+                <div class="head selletsuccess2">
+                    <div class="desc">
+
+                    </div>
+                </div>
+            </div>
+        </ng-form>
+
+    </ion-content>
+</ion-view>

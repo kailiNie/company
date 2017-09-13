@@ -1,0 +1,41 @@
+<ion-view view-title="云付业务员登录" class=" bg_f0f0f0 ">
+    <ion-content overflow-scroll="true" has-bouncing="false">
+
+
+        <ng-form name="form1" ng-controller="saleslogin">
+            <ion-list>
+                <ion-item class="item-input ">
+                    <input
+                            type="tel"
+                            ng-model="data.user.userPhone"
+                            name="userPhone"
+                            placeholder="请输入注册手机号"
+                            ccp_input_close
+                            phone
+                            required/>
+                </ion-item>
+
+                <ion-item class="item-input">
+                    <input
+                            type="password"
+                            ng-model="data.user.userPwd"
+                            name="userPwd"
+                            placeholder="请输入6-30数字或字母的密码"
+                            ccp_input_close
+                            userpwd
+                            required/>
+                </ion-item>
+
+
+                <ion-item class="padding noborder bg_f0f0f0 btn-pagesingle">
+                    <button class="button button-block button-assertive"
+                            ng-disabled="!data.isArget"
+                            ng-click="fun.userRegist()">
+                        登录
+                    </button>
+                </ion-item>
+        </ng-form>
+
+    </ion-content>
+</ion-view>
+

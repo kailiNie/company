@@ -1,0 +1,81 @@
+<ion-view  view-title="资金收支明细" class="bg_f0f0f0 hasTitle ssp-budgetDetail" >
+
+  <div class="search row">
+    <span class="col col-50 font_14 color_444 text-left">{{data.searchday?data.searchday:'全部'}}</span>
+    <a class="col col-50 font_14 color_dc4b39 text-right" ng-click="fun.showDate($event)"><查询></a>
+  </div>
+
+  <ion-header-bar class="bar bar-subheader bar-stable spp_listTitle" >
+    <div class="button-bar">
+      <a class="button rb"  ng-click="fun.show(true)" ng-class="{'color_dc4b39':data.showFlag}">收入</a>
+      <a class="button"  ng-click="fun.show(false)" ng-class="{'color_dc4b39':!data.showFlag}">支出</a>
+    </div>
+  </ion-header-bar>
+
+  <ion-content class="has-header">
+    <ion-list  ng-show="data.showFlag" class="ssp_clerklist ">
+      <ion-item ng-repeat="item in data.in"
+                data-index="item.relationId"
+                ng-click="fun.goToIn(item.relationId,item.feeType)">
+        <div class="row">
+          <p class="col col-50 text-left color_a2a2a2">{{fun.common.getday(item.createTime)}}</p>
+          <p class="col col-50 text-right color_dc4b39">{{item.feeTypeEnumName}}</p>
+        </div>
+        <div class="row">
+          <p class="col col-50 text-left color_a2a2a2">{{fun.common.getTime(item.createTime)}}</p>
+          <p class="col col-50 text-right color_444">+{{item.amount|number:2}}</p>
+        </div>
+      </ion-item>
+      <ion-item class="padding0 noborder pageInitNoResult"
+                ng-show="page.in.initNoResultShow()">
+
+        <p  class="padding5 color_969696 text-center bg_f0f0f0">没有收入数据</p>
+
+      </ion-item>
+
+      <ion-item class="padding0 noborder pageUpNoResult"
+                ng-show="(!page.in.initNoResultShow() && page.in.upNoResultShow())">
+
+        <p  class="padding5 color_969696 text-center bg_f0f0f0">没有更多数据</p>
+
+      </ion-item>
+    </ion-list>
+
+    <ion-list ng-show="!data.showFlag" class="ssp_clerklist">
+      <ion-item ng-repeat="item in data.out"
+                data-index="item.relationId"
+                ng-click="fun.goToIn(item.relationId,item.feeType)">
+        <div class="row">
+          <p class="col col-50 text-left color_a2a2a2">{{fun.common.getday(item.createTime)}}</p>
+          <p class="col col-50 text-right color_dc4b39">{{item.feeTypeEnumName}}</p>
+        </div>
+        <div class="row">
+          <p class="col col-50 text-left color_a2a2a2">{{fun.common.getTime(item.createTime)}}</p>
+          <p class="col col-50 text-right color_444">-{{item.amount|number:2}}</p>
+        </div>
+      </ion-item>
+      <ion-item class="padding0 noborder pageInitNoResult"
+                ng-show="page.out.initNoResultShow()">
+        <p  class="padding5 color_969696 text-center bg_f0f0f0">没有支出数据</p>
+
+      </ion-item>
+
+      <ion-item class="padding0 noborder pageUpNoResult"
+                ng-show="(!page.out.initNoResultShow() && page.out.upNoResultShow())">
+
+        <p  class="padding5 color_969696 text-center bg_f0f0f0">没有更多数据</p>
+
+      </ion-item>
+    </ion-list>
+
+
+    <ion-infinite-scroll
+            ng-if="!page.in.upNoResultShow()"
+            on-infinite="page.in.up()"
+            immediate-check="false"></ion-infinite-scroll>
+    <ion-infinite-scroll
+            ng-if="!page.out.upNoResultShow()"
+            on-infinite="page.out.up()"
+            immediate-check="false"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

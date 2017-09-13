@@ -1,0 +1,43 @@
+<ion-view view-title="我的银行卡" class="myCards-box bg_f0f0f0 bank">
+    <ion-nav-buttons side="right">
+        <i class="icon ion-android-add"
+           style="font-size:28px;padding-top:2px;padding-right:10px;"
+           ng-click="fun.addCard()"></i>
+    </ion-nav-buttons>
+    <ion-content class="padding">
+        <!--有银行卡时/-->
+        <ion-list>
+            <ion-item
+                    class="bankCardWapper"
+                    ng-repeat="item in data.data"
+                    ng-click="fun.goToCardDetail(item.id)">
+                <div class="bgicon">
+                    <span class="iconfont {{item.desc.icon}}"></span>
+                </div>
+                <div class="bankCard {{item.desc.bgColor||'bank_436bb0'}}">
+                    <div class="iconLeft">
+                        <i class="iconfont {{item.desc.icon}}"></i>
+                    </div>
+
+                    <div class="bankText">
+                        <p class="font_18 font_bold">{{item.bankCardName}}</p>
+                        <!--<p class="font_12">&nbsp; {{item.CardholderName}}</p>-->
+                        <p class="font_24 margin-top-10 text-left font_bold">
+                            <!--<span class="cardNo">**** **** **** </span>-->
+                            {{fun.getShowBankNo(item.bankCardNo)}}
+                        </p>
+                    </div>
+                </div>
+            </ion-item>
+            <ion-item class="padding0 noborder pageUpNoResult"
+            ng-show="data.hasData">
+
+                <p  class="padding5 color_969696 text-center bg_f0f0f0">暂无银行卡信息，请添加</p>
+
+            </ion-item>
+        </ion-list>
+        <!--<div class="row addCard-btn">-->
+            <!--<button class="button button-block bg_dc4b39" ng-click="fun.addCard()">添加银行卡</button>-->
+        <!--</div>-->
+    </ion-content>
+</ion-view>

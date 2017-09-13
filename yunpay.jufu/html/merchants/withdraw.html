@@ -1,0 +1,172 @@
+<ion-view  view-title="{{data.title}}提现" class="bg_f0f0f0">
+
+    <ion-nav-bar class="bar-stable">
+
+        <ion-nav-back-button ng-click="fun.back()">
+            返回
+        </ion-nav-back-button>
+
+        <ion-nav-buttons side="right" >
+            <span style="line-height: 36px;" ng-click="fun.withdrawlist(1)">提现记录</span>
+        </ion-nav-buttons>
+
+    </ion-nav-bar>
+
+    <ion-content  ng-show="!data.user.isSetSecurityPwd">
+        <ion-list >
+            <ion-item class="bg_f0f0f0 text-center noborder">
+                <p>提现需要安全密码,</p>
+                <a href="#/merchants/setPassword/1">点击设置安全密码</a>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+
+    <ion-content class="withdraw" ng-show="data.user.isSetSecurityPwd">
+
+        <div class="row text-center" ng-show="data.showFlag!=3">
+            <div class="col" ng-click="fun.show(1)" ng-class="{'color-dc4b39':data.showFlag==1}">提现到银行卡</div>
+            <div class="col" ng-click="fun.show(2)" ng-class="{'color-dc4b39':data.showFlag==2}">提现到微信</div>
+        </div>
+
+        <!--没有银行卡体现权限-->
+        <ion-list ng-show="!data.tixianMothed.bank && data.showFlag==1">
+            <ion-item class="bg_f0f0f0 noborder text-center">
+                <a>暂时不提供银行卡提现功能,请选择其他方式</a>
+            </ion-item>
+        </ion-list>
+
+        <!--没有微信体现权限-->
+        <ion-list ng-show="!data.tixianMothed.weixin && data.showFlag==2">
+            <ion-item class="bg_f0f0f0 noborder text-center">
+                <a>暂时不提供微信提现功能,请选择其他方式</a>
+            </ion-item>
+        </ion-list>
+
+        <!--没有银行卡-->
+        <ion-list ng-show="data.tixianMothed.bank && !data.showBankMethod && data.showFlag==1">
+            <ion-item class="bg_f0f0f0 noborder text-center">
+                <a href="#/merchants/merchantsaddCard">没有银行卡信息,请先绑定银行卡.</a>
+            </ion-item>
+        </ion-list>
+
+        <!--提取余额-->
+        <ion-list ng-show="(
+         (data.tixianMothed.weixin && data.showFlag==2) ||
+         (data.tixianMothed.bank && data.showBankMethod && data.showFlag==1))">
+            <ion-item class="item-icon-left" ng-click="fun.show(3)" ng-show="data.showFlag==1">
+                <i class="iconfont bankinco {{data.post.desc.icon}}"></i>
+                <span>{{data.post.bankCardName}}</span>
+                <span class="item-note">手续费率{{data.withdrawalFee}}‰</span>
+            </ion-item>
+            <ion-item class="item-icon-left" ng-show="data.showFlag==2">
+                <img ng-src="{{data.user.headUrl}}">
+                {{data.user.nickName || '暂无微信昵称'}}
+                <span class="item-note">手续费率{{data.withdrawalFee}}‰</span>
+            </ion-item>
+            <ion-item class="item-input withdrawNum">
+                <span class="input-label ">￥</span>
+                <input
+                        type="tel"
+                        class="text-right"
+                        ng-change="fun.changeAmount()"
+                        ng-model="data.post.amount">
+            </ion-item>
+            <ion-item>
+                <!--<span ng-show="!data.post.amount">账户余额：{{data.user.withdrawalAmount}}</span>-->
+                <span>{{data.user.withdrawalAmountText}}</span>
+                <a style="float: right" class="right" ng-click="fun.getAll()">全部转出</a>
+            </ion-item>
+            <ion-item class="item-divider" style="min-height: 15px;padding:0px;">
+            </ion-item>
+            <ion-item ng-hide="data.type == 3" class="item-checkbox">
+                <label class="checkbox">
+                    <input
+                            type="radio"
+                            name="withdrawType"
+                            ng-click="fun.showType(0)"
+                            ng-model="data.tixianType"
+                            value="0"
+                    />
+                </label>
+                <p class="color_444">
+                    D+0 快速到账 <span title="(服务时间9:00-22:00)" class="color_a2a2a2">(服务时间9:00-22:00)</span>
+                </p>
+                <p class="color_a2a2a2" ng-show="data.showwithdrawalTips==1">
+                    最快
+                    <span class="color-dc4b39">3小时内</span>
+                    到账
+                </p>
+                <p class="color_a2a2a2" ng-show="data.showwithdrawalTips==2">
+                    预计
+                    <span class="color-dc4b39">明天10:10分前</span>
+                    到账
+                </p>
+            </ion-item>
+            <ion-item  ng-hide="data.type == 3" class="item-checkbox">
+                <label class="checkbox">
+                    <input
+                            type="radio"
+                            name="withdrawType"
+                            ng-click="fun.showType(1,$event)"
+                            ng-model="data.tixianType"
+                            value="1"
+                    />
+                </label>
+                <p class="color_444">
+                    D+1 普通到账
+
+                </p>
+                <p class="color_a2a2a2">
+                    预计
+                    <span class="color-dc4b39">明天17:10分前</span>
+                    到账
+                </p>
+            </ion-item>
+            <ion-item class="secondArrive" ng-show="data.type == 3">
+            	<div class="RMBicon">
+            		<img src="img/RMBicon.png"/>
+            	</div>
+            	<div class="secondArriveText">
+            		<p>提现秒到</p>
+            		<p class="warningNote">恭喜，您拥有提现秒到的机会！</p>
+            		<p class="warningNote">金额不低于10元不高于500元</p>
+            	</div>
+            	<div class='moreWaringNote'>
+            		<p>22:30-23.30为银行处理时间，到账会有延迟！</p>
+            	</div>
+            </ion-item>
+            <ion-item class="noborder bg_f0f0f0">
+                <button
+                        ng-disabled="!data.showBtn"
+                        class="button button-block button-assertive"
+                        ng-click="fun.save()">确认提现
+                </button>
+            </ion-item>
+        </ion-list>
+
+        <!--银行卡选择-->
+        <ion-list class="bank" ng-show="data.showFlag==3">
+            <ion-item
+                    class="bankCardWapper"
+                    ng-repeat="item in data.bank"
+                    ng-click="fun.getCard(item)">
+                <div class="bgicon">
+                    <span class="iconfont {{item.desc.icon}}"></span>
+                </div>
+                <div class="bankCard {{item.desc.bgColor||'bank_436bb0'}}">
+                    <div class="iconLeft">
+                        <i class="iconfont {{item.desc.icon}}"></i>
+                    </div>
+
+                    <div class="bankText">
+                        <p class="font_18 font_bold">{{item.bankCardName}}</p>
+                        <p class="font_24 margin-top-10 text-left font_bold">
+                            {{fun.getShowBankNo(item.bankCardNo)}}
+                        </p>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+
+    </ion-content>
+</ion-view>

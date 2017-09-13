@@ -1,0 +1,47 @@
+<ion-view  view-title="设置中心" class="bg_f0f0f0">
+    <ion-nav-bar class="bar-stable">
+        <ion-nav-back-button ng-click="fun.back()">
+            返回
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content class="padding-top merchants setCenter-box">
+        <ion-list>
+            <ion-item class="item-input item-icon-right">
+                <span class="input-label">我的账号（{{data.phoneNum}}）</span>
+            </ion-item>
+            <ion-item class="item-input item-icon-right" ng-click="fun.goToMyCards()">
+                <span class="input-label">我的银行卡</span>
+<!--                 <i class="icon ion-ios-arrow-right"></i> -->
+            </ion-item>
+            <ion-item class="item-input item-icon-right" ng-click="fun.goToSetPwd()">
+                <span class="input-label">修改安全密码</span>
+<!--                 <i class="icon ion-ios-arrow-right"></i> -->
+            </ion-item>
+            <ion-item class="item-input item-icon-right" ng-click="fun.showPopoverT()" ng-show="!user.hasCode">
+            	<span id="help"></span>
+                <span class="input-label">业务员邀请码</span>
+           <!--      <i class="icon ion-ios-arrow-right"></i> -->
+            </ion-item>
+            <ion-item class='font_14' ng-show="user.hasCode">
+                <span>业务员邀请码</span>
+                <p class="float_right">{{user.userCode}}</p>
+            </ion-item>
+            <ion-item class='font_14' ng-click="fun.bankAuthentication()">
+                <span>商家认证</span>
+                <p class="float_right">点击认证</p>
+            </ion-item>
+            <!--<ion-item class="item-input item-icon-right" ng-click="fun.goToMyEcode()">
+                <span class="input-label">我的二维码</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-input item-icon-right" ng-click="fun.goToMyClerk()">
+                <span class="input-label">我的收银员</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-input item-icon-right" ng-click="fun.goShop()">
+                <span class="input-label">店铺管理</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>-->
+        </ion-list>
+    </ion-content>
+</ion-view>

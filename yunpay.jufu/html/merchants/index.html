@@ -1,0 +1,78 @@
+<ion-view view-title="商家中心" class="ssp-buyerInfo bg_f0f0f0">
+	<!--<a class="kefuzixun" ng-click="fun.kefu()"><img src="img/kefuzixun.svg"/></a>-->
+  <ion-content >		
+    <ion-list class="head">
+      <ion-item class="item-thumbnail-left item-icon-right" href="#/merchants/setCenter">
+        <img ng-src="{{data.shopLogo}}">
+        <h2>{{data.shopName}}</h2>
+        <p class="title-desc">管理账号、绑定银行卡、管理安全密码</p>
+        <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+    </ion-list>
+		
+    <ion-list class="body">
+    	<div class="division-bar"></div>
+      <ion-item>
+      	<div class="capital-title">
+      		<i class="spp-zijinzhanghu iconfont"></i>
+      		<p>资金账户</p>
+      	</div>
+      	<div class="row">
+      		<div class="col col-33 blue" ng-click="fun.goBlanceAmount(data.blanceAmount)">
+	          <div>
+	            <p>余额</p>
+	            <p>{{data.blanceAmount | number:2}} 元</p>
+	          </div>
+	        </div>
+	        <!--<div class="col col-33 blue" ng-click="fun.goPointDetail()">
+	          <div>
+	            <p>积分</p>
+	            <p>{{data.totalScore}} 分</p>
+	          </div>
+	        </div>-->
+	        <!--<div class="col col-33 blue" ng-click="fun.goReward()">
+	          <div>
+	            <p>奖金</p>
+	            <p>{{data.bonusAmount | number:3}} 元</p>
+	          </div>
+	        </div>	        -->
+      	</div>
+      </ion-item>
+      <div class="division-bar"></div>
+      <ion-item>
+      	<div class="receipt-title">
+      		<i class="spp-shoukuan iconfont"></i>
+      		<p>收款</p>
+      	</div>
+      	<div class="row">
+    <!--     
+      		<div class="col col-33 blue" ng-click="fun.goScanCodeCenter()">
+	          <div>
+	            <p class="one-line-text">扫码收款</p>	            
+	          </div>
+	        </div>
+ -->
+          <div class="col col-33 blue" ng-click="fun.quickPay()" >
+            <div>
+              <p class="one-line-text" >快捷收款</p>             
+            </div>
+          </div>
+      		<div class="col col-33 blue" ng-click="fun.goSaleDetail()">
+	          <div>
+	            <p>销售总额</p>
+	            <p>{{data.sales | number:2}} 元</p>
+	          </div>
+	        </div>
+      	</div>  
+      </ion-item>
+      <div class="division-bar"></div>
+      <ion-item>
+      <div class="row">
+          <div class="col   font_18"><laberl>我要赚钱</laberl></div>
+          <div class="col  col-75 color_CBCBCB ">邀请商家使用聚合收款, 获取收银</div>
+      </div>
+
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,209 @@
+<ion-view view-title="填写店铺信息" class="bg_f0f0f0"" >
+
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-back-button ng-click="fun.back()">
+      返回
+    </ion-nav-back-button>
+    <ion-nav-buttons side="right" >
+      <a class="button " ng-show="data.showIndex==2" ng-click="fun.saveAddress()">
+        完成
+      </a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+  <ion-content class="padding-top">
+
+    <ng-form name="form1" ng-show="data.showIndex==1">
+      <ion-list>
+        <ion-item class="item-input ">
+          <p class="input-label">
+            <span class="color_dc4b39">*</span>
+            店铺名称
+          </p>
+          <input
+            type="text"
+            ng-model="data.user.ShopName"
+            name="ShopName"
+            placeholder="请输入您的店铺名称"
+            ccp_input_close
+            required/>
+        </ion-item>
+
+        <ion-item class="item-input">
+          <p class="input-label">
+            <span class="color_fff">*</span>
+            分店名称
+          </p>
+          <input
+            type="text"
+            ng-model="data.user.SubName"
+            name="SubName"
+            placeholder="非必填"
+            ccp_input_close
+            required/>
+        </ion-item>
+
+        <ion-item class="item-divider">
+          <p class="color_a2a2a2 showAll">请勿填错格式，导致开店失败。正确示例如下：</p>
+          <p class="color_a2a2a2 showAll">1.老盛季麻辣烫：主店名=老盛季麻辣烫，分店名不填。</p>
+          <p class="color_a2a2a2 showAll">2.麦当劳（大学城店）：主店名=麦当劳，分店名=大学城店。</p>
+          <p class="color_a2a2a2 showAll">3.毛记餐馆（翻身店）：主店名=毛记餐馆，分店名=翻身店。</p>
+        </ion-item>
+
+        <ion-item class="item-input item-icon-right">
+          <p class="input-label">
+            <span class="color_dc4b39">*</span>
+            店铺地址</p>
+
+          <p class="spp-desc" ng-click="fun.showAddress()">{{data.user.Address}}</p>
+          <i class="icon iconfont ion-ios-arrow-right color_a2a2a2"></i>
+        </ion-item>
+
+        <ion-item class="item-input">
+          <p class="input-label">
+            <span class="color_fff">*</span>
+            店铺电话
+          </p>
+          <input
+            type="tel"
+            ng-model="data.user.TelePhone"
+            name="TelePhone"
+            placeholder="非必填"
+            ccp_input_close
+            required/>
+        </ion-item>
+
+        <ion-item class="item-divider">
+          <p class="color_a2a2a2 showAll">座机号需填写区号-电话,如:0755-1234567</p>
+          </ion-item>
+        <ion-item class="item-checkbox spp-two-check">
+          <p class="input-label">
+            <span class="color_dc4b39">*</span>商家类型</p>
+          <div class="two-check">
+            <label class="checkbox">
+              <input
+                type="radio"
+                name="ShopType"
+                ng-model="data.user.ShopType"
+                value="1"/>
+              个人运营
+            </label>
+            <label class="checkbox">
+              <input type="radio"
+                     name="ShopType"
+                     ng-model="data.user.ShopType"
+                     value="2"/>
+              企业运营
+            </label>
+          </div>
+        </ion-item>
+        <ion-item class="item-input item-icon-right">
+          <p class="input-label">
+            <span class="color_dc4b39">*</span>主营业务</p>
+          <p class="spp-desc" ng-click="popover.industries.fun().showDialog($event)">{{data.user.industriesText}}</p>
+          <i class="icon iconfont ion-ios-arrow-right color_a2a2a2"></i>
+        </ion-item>
+        <ion-item class="item-input item-icon-right">
+          <p class="input-label">
+            <span class="color_dc4b39">*</span>单日营业额</p>
+          <p class="spp-desc" ng-click="popover.maxDailySales.fun().showDialog($event)">{{data.user.MaxDailySalesText}}</p>
+          <i class="icon iconfont ion-ios-arrow-right color_a2a2a2"></i>
+        </ion-item>
+        <ion-item class="item-divider"></ion-item>
+
+        <ion-item class="item-input">
+          <p class="input-label">
+            <span class="color_dc4b39">*</span>营业执照</p>
+          <div class="spp-upload" ngf-select="fun.upload($files,1)">
+            <img ng-src="{{data.user.BusinessLicense}}">
+            <a ng-show="!data.hasBusinessLicense" ng-click="fun.showImg(1,$event)">示例</a>
+            <i class="spp-shangchuantupian iconfont"></i>
+            <p>点击上传</p>
+          </div>
+        </ion-item>
+
+        <ion-item class="item-input">
+          <p class="input-label">
+            <span class="color_fff">*</span>经营许可证</p>
+          <div class="spp-upload" ngf-select="fun.upload($files,3)">
+            <img ng-src="{{data.user.BusinessCertificate}}">
+            <a ng-show="!data.hasBusinessCertificate" ng-click="fun.showImg(1,$event)">示例</a>
+            <i class="spp-shangchuantupian iconfont"></i>
+            <p>点击上传,非必填</p>
+          </div>
+        </ion-item>
+
+        <ion-item class="item-divider">
+
+        </ion-item>
+
+        <ion-item class="item-input">
+          <p class="input-label">
+            <span class="color_dc4b39">*</span>门店Logo</p>
+          <div class="spp-upload" ngf-select="fun.upload($files,2)">
+            <img ng-src="{{data.user.Logo}}">
+            <a ng-show="!data.hasLogo" ng-click="fun.showImg(1,$event)">示例</a>
+            <i class="spp-shangchuantupian iconfont"></i>
+            <p>点击上传</p>
+          </div>
+        </ion-item>
+
+        <ion-item class="item-input">
+          <p class="input-label">
+            <span class="color_dc4b39">*</span>门头照</p>
+          <div class="spp-upload" ngf-select="fun.upload($files,4)">
+            <img ng-src="{{data.user.Doorway}}">
+            <a ng-show="!data.hasDoorway" ng-click="fun.showImg(1,$event)">示例</a>
+            <i class="spp-shangchuantupian iconfont"></i>
+            <p>点击上传</p>
+          </div>
+        </ion-item>
+        <ion-item class="item-divider">
+          <p class="color_a2a2a2">证件照不可大于5M,建议尺寸1200*750px</p>
+        </ion-item>
+
+        <ion-item class="padding noborder bg_f0f0f0 btn-pagesingle">
+          <button class="button button-block button-assertive"  ng-click="fun.go()">
+            保存店铺信息
+          </button>
+        </ion-item>
+    </ng-form>
+
+    <ng-form name="form2" class="spp-address" ng-show="data.showIndex==2">
+      <ion-list>
+        <ion-item class="item-input item-icon-right">
+          <p class="input-label">店铺所在区</p>
+          <p class="spp-desc" ng-click="popover.city.fun().showDialog($event)">{{data.shopAddress.showArea}}</p>
+          <i class="icon iconfont ion-ios-arrow-right color_a2a2a2"></i>
+        </ion-item>
+        <ion-item class="item-input item-icon-right" >
+          <input
+                  type="text"
+                  ng-model="data.shopAddress.address"
+                  name="searchAddress"
+                  placeholder="请输入店铺详细地址"
+                  ng-click="fun.showSearch()"
+                  required/>
+
+          <a
+                  class="icon iconfont spp-dingwei color_dc4b39"
+                  ng-click="fun.setCityCenter()"
+                  ng-show="!data.shopAddress.showSearch"></a>
+          <a
+                  class="icon iconfont ion-ios-search"
+                  ng-click="fun.searchAddress()"
+                  ng-show="data.shopAddress.showSearch"></a>
+        </ion-item>
+
+        <ion-item class="item-divider">
+          <p class="color_a2a2a2 showAll">请按格式填写地址，以免影响门店搜索以及活动报名：</p>
+          <p class="color_a2a2a2 showAll">例1：道路+门牌号，“翻身路168号”；</p>
+          <p class="color_a2a2a2 showAll">例2：道路+门牌号+标志性建筑+楼层，“宝安翻身路华创达文化科技产业园”A30X；</p>
+        </ion-item>
+      </ion-list>
+      <div id="qqmap" class="map" data-tap-disabled="true">
+
+      </div>
+    </ng-form>
+  </ion-content>
+</ion-view>

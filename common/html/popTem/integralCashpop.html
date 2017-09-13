@@ -1,0 +1,26 @@
+<ion-popover-view class="integralStoreModal">
+	<ion-content>
+		<div class="back-drop" ng-click="fun.popoverHide()"></div>
+		<div class="modalContent">
+			<div class="closeIconImg">
+				<img src="img/closethis.png" ng-click="fun.popoverHide()" />
+			</div>
+			<div class="popoverArch">
+				<img src="img/popoverArch.png" />
+				<div class="archContent">
+					<div class="money">
+						￥<span>{{data.popover.money}}</span>
+					</div>
+					<div class="tip">
+						<p class="textTop">{{data.popover.money}}元提现手续费抵用券</p>
+						<p class="textBottom">有效期至{{data.popover.endTime}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="choise_btn">
+				<img src="img/useNowBtn.png" ng-click="fun.goWithdraw(data.popover.voucherId)"/>
+				<img src="img/lookNowBtn.png" ng-click="fun.goIntegralCardCenter()"/>
+			</div>
+		</div>
+	</ion-content>
+</ion-popover-view>

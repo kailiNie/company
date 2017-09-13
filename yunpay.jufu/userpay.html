@@ -1,0 +1,84 @@
+<html><head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>聚合收款</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css?v=0329" rel="stylesheet">
+    <link href="http://at.alicdn.com/t/font_yjknl8sn0u9xusor.css" rel="stylesheet">
+    <script src="http://pub.idqqimg.com/qqmobile/qqapi.js?_bid=152"></script>
+    <script src="lib/jquery-3.1.1.min.js"></script>
+    <script src="js/pay/cibpay.js?v=0329"></script>
+</head>
+<body class="grade-a platform-browser platform-android platform-android6 platform-android6_0 platform-ready">
+<div class="bar-stable nav-bar-container">
+    <div class="nav-bar-block" nav-bar="active">
+        <div class="bar-stable bar bar-header">
+            <div class="title title-center header-item" id="title"></div>
+        </div>
+    </div>
+</div>
+
+<div class="view-container">
+    <div name="content" class="pane view-container" >
+        <div class="payInfo bg_f0f0f0 pane">
+            <div class="scroll-content ionic-scroll  has-header">
+                <div class="scroll">
+                    <div class="wrap">
+                        <div class="list">
+                            <label class="item item-input">
+                                <span class="input-label">消费总金额(元)</span>
+                                <input type="number"
+                                       name="amount"
+                                       id="amount"
+                                       class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"/>
+                            </label>
+                        </div>
+                        <div class="list">
+                            <label class="item item-input">
+                                <span class="input-label">选填备注</span>
+                                <input type="text"
+                                       placeholder="如房号、服务员号"
+                                       name="remarks"
+                                       id="remarks"
+                                       maxlength="50"
+                                       class="ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength"/>
+                            </label>
+                        </div>
+                        <p class="changePayType">使用微信支付，更换<a id="goShortcut">快捷支付</a></p>
+                        <p class="payMoney">实付金额(元)<span class="ng-binding" id="showAmount"></span></p>
+                        <button id="save"  class="button button-block">立即买单</button>
+                       <div class="waringText">
+							
+							<p> 
+								<i class="spp-tishi iconfont"></i>
+								若微信支付失败，可试试支付宝、QQ钱包等其他支付方式。</p>			
+						</div>						
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="backdrop visible active hide" id="backdrop"></div>
+<div class="popup-container popup-showing active tipsDialogSuccess hide" id="tipsDialogSuccess">
+    <div class="popup">
+        <div class="popup-body">
+            <span></span>
+        </div>
+    </div>
+</div>
+<div class="popup-container popup-showing active tipsDialogError hide" id="tipsDialogError">
+    <div class="popup">
+        <div class="popup-body">
+            <span></span>
+        </div>
+    </div>
+</div>
+<div class="weui-toast hide" id="loading">
+    <i class="weui-loading weui-icon_toast"></i>
+    <p class="weui-toast__content"></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<ion-view  view-title="待入驻商家列表" class="bg_f0f0f0 hasTitle">
+
+    <ion-content class="padding-top">
+        <ion-list class="ssp_clerklist ">
+            <ion-item class="item" ng-repeat="item in data.shop" ng-click="fun.go(item)">
+                <div class="row">
+                    <p class="col col-70 text-left">{{item.name}}</p>
+                    <p class="col col-30 text-right  color_a2a2a2">D0:
+                        <span class="color_9ccc65">{{item.cashInRateT0| number:1}}</span>
+                    </p>
+                </div>
+                <div class="row">
+                    <p class="col col-70 text-left">{{item.telePhone}}</p>
+                    <p class="col col-30 text-right  color_a2a2a2">D1:
+                        <span class="color_dc4b39">{{item.cashInRateT1| number:1}}</span>
+                    </p>
+                </div>
+            </ion-item>
+
+            <ion-item class="padding0 noborder pageinitnoresult"
+                      ng-show="page.shop.initNoResultShow()">
+
+                <p class="padding5 color_969696 text-center bg_f0f0f0">没有待入驻店铺数据</p>
+
+            </ion-item>
+
+            <ion-item class="padding0 noborder pageUpNoResult"
+                      ng-show="(!page.shop.initNoResultShow() && page.shop.upNoResultShow())">
+
+                <p class="padding5 color_969696 text-center bg_f0f0f0">没有更多数据</p>
+
+            </ion-item>
+        </ion-list>
+
+
+        <ion-infinite-scroll
+                ng-if="!page.shop.upNoResultShow()"
+                on-infinite="page.shop.up()"
+                immediate-check="false">
+        </ion-infinite-scroll>
+    </ion-content>
+</ion-view>

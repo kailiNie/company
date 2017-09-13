@@ -1,0 +1,89 @@
+<ion-view  view-title="注册商家" class="bg_f0f0f0">
+  <ion-content class="padding-top ">
+
+    <ng-form name="form1" ng-controller="sellerregist">
+      <ion-list>
+        <ion-item class="item-input ">
+          <input
+            type="tel"
+            ng-model="data.user.userPhone"
+            name="userPhone"
+            placeholder="请输入您的手机号"
+            ccp_input_close
+            phone
+            required/>
+        </ion-item>
+
+        <ion-item class="item-input">
+          <input
+            type="password"
+            ng-model="data.user.userPwd"
+            name="userPwd"
+            placeholder="请输入您的登录密码(6-20位数字或字母)"
+            ccp_input_close
+            userpwd
+            required/>
+        </ion-item>
+
+        <ion-item class="item-input">
+          <input
+            type="password"
+            ng-model="data.user.reuserPwd"
+            name="reuserPwd"
+            placeholder="请再次输入登录密码(6-20位数字或字母)"
+            ccp_input_close
+            userpwd
+            required/>
+        </ion-item>
+
+        <!--<ion-item class="item-input item-button-right">
+          <input
+            type="tel"
+            ng-model="data.user.validatecode"
+            name="validatecode"
+            placeholder="请输入右侧4位图形验证码"
+            validatecode
+            required/>
+          <img class="validateCode" ng-click="fun.getvalidatecode()" ng-src="{{data.codeUrl}}">
+        </ion-item>-->
+
+        <ion-item class="item-input item-button-right">
+          <input
+            type="tel"
+            ng-model="data.user.phoneCode"
+            name="phoneCode"
+            placeholder="请输入5位数字短信验证码"
+            send_phone_code
+            phonecode
+            required/>
+        </ion-item>
+
+        <ion-item class="item-input" ng-show="!data.hadReferInvter">
+          <input
+            type="text"
+            ng-model="data.user.inviterCode"
+            name="inviterCode"
+            placeholder="请输入推广人邀请码"
+            ng-change="fun.getInviter()"
+            ccp_input_close/>
+        </ion-item>
+        
+        <ion-item class = 'hadReferInvter' ng-show="data.hadReferInvter">
+        	{{data.hadReferInvter}}
+        </ion-item>
+
+        <ion-item class="item-divider" >
+          <p class="disabled bg_f0f0f0">{{data.user.inviter}}</p>
+        </ion-item>
+      
+        <ion-item class="padding noborder bg_f0f0f0 btn-pagesingle">
+          <button class="button button-block button-assertive"
+                  ng-disabled="!data.isArget"
+                  ng-click="fun.userRegist()">
+            注册并登录
+          </button>
+        </ion-item>
+    </ng-form>
+
+  </ion-content>
+</ion-view>
