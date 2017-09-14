@@ -1,0 +1,18 @@
+<ion-view view-title='商家收银业务' class='bg_f0f0f0 spp-merchantOperation'>
+	<ion-content overflow-scroll="true" has-bouncing="false">
+		<ion-list>
+			<ion-item class='item-image full_img qr_item'>
+				<img src="img/merchant-operation1no.jpg"/>
+				<div class="item-image QRcode">
+					<img ng-src="{{img.imgUrl||'img/taidupayQR.png'}}"/>
+				</div>
+				<div class="InvitationCode">
+					{{data.code}}
+				</div>
+			</ion-item>
+			<ion-item class='item-image full_img margin_gotop'>
+				<img src="img/merchant-operation2.jpg"/>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

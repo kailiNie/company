@@ -1,0 +1,113 @@
+<ion-view  view-title="添加银行卡" class="bg_f0f0f0 spp-addBankCard">
+
+    <ion-content ng-controller="addBankCard">
+
+        <!--<ion-list ng-show="!data.hasPwd">
+            <ion-item class="bg_f0f0f0 text-center noborder">
+                <p>绑定银行卡需要安全密码,</p>
+                <a href="#/merchants/setPassword/1">点击设置安全密码</a>
+            </ion-item>
+        </ion-list>-->
+
+        <ng-form name="form1">
+            <ion-list>
+                <ion-item class="item-input ">
+                	<label for="fullName">持卡人</label>
+                    <input
+                    		class="text-right has-btn-help"
+                            type="text"
+                            name="fullName"
+                            ng-model="data.realName"
+                            disabled="disabled"
+                            required>
+                    <span class="btn-help" id="help" ng-click="fun.showPopoverT()">
+						<span class="circle"><span>?</span></span>
+					</span>	
+                </ion-item>
+
+                <ion-item class="item-input">
+                	<label for="bankCardNo">卡号</label>
+                    <input
+                    		class="text-right"
+                            type="tel"
+                            class="input-label"
+                            placeholder="请填写卡号"
+                            name="bankCardNo"
+                            ng-model="data.bankCardNo"
+                            ng-blur="fun.showBankInfo()"
+                            required>
+                </ion-item>
+
+				<ion-item class="item-input">
+                	<label for="bankCardName">开户行</label>
+                    <input
+                    		class="text-right bankName"
+                    		ng-class="{color_a2a2a2:data.hasBackName==false,color_444:data.hasBackName==true}"
+                            type="text"
+                            disabled="disabled"
+                            class="input-label"
+                            name="bankCardName"
+                            ng-model="data.bankCardName"
+                            required>
+                </ion-item>
+
+                <ion-item class="item-input item-icon-right city_set_item" ng-click="popover.city.fun().showDialog($event)">
+                	<label for="">开户行所在城市</label>
+                    <p class="input-label color_a2a2a2 city_set"
+                    	ng-class="{color_a2a2a2:data.hasCityName==false,color_444:data.hasCityName==true}">{{data.cityText}}</p>
+                    <i class="icon iconfont ion-ios-arrow-right color_a2a2a2"></i>
+                </ion-item>
+                
+                <ion-item class="item-input ">
+		        	<label for="userPhone">手机号</label>
+		          <input
+		          	class="text-right"
+		            type="tel"
+		            ng-model="data.userPhone"
+		            name="userPhone"
+		            placeholder="请输入您的手机号"
+		            phone
+		            required/>
+		        </ion-item>
+		        
+		        <ion-item class="item-input item-button-right">
+		        	<label for="phoneCode">验证码</label>
+		          <input
+		          	class="text-right addBankCard-phoneCode"
+		            type="tel"
+		            ng-model="data.phoneCode"
+		            name="phoneCode"
+		            placeholder="请输入短信验证码"
+		            send_phone_code
+		            phonecode
+		            required/>
+		        </ion-item>
+                
+                <ion-item class="item-checkbox noborder spp-arget bg_f0f0f0" >	
+		          <label class="checkbox">
+		            <input type="checkbox" value="true" ng-model="data.isArget"/>
+		          </label>
+		          <span class="font_color_9e9e9e font_12">同意</span>
+		          <a class="xieyi nodecoration font_12" href="#/merchants/userArget">
+		            《万众云付服务协议》
+		          </a>
+		        </ion-item>
+		        
+                <ion-item class="padding noborder bg_f0f0f0 btn-pagesingle">
+                    <button class="button button-block button-positive"
+                    		ng-disabled="!data.isArget"
+                            ng-click="fun.addCardSubmit()">
+                        绑定银行卡
+                    </button>
+                </ion-item>
+                
+                <ion-item ng-show="showVoiceValidateToggle" class = 'voiceValidate' id='VoiceValidate'>
+		        	收不到短信，<a ng-click="getVoiceValidate()">接听电话</a>获取验证码
+		        </ion-item>
+                
+                
+        </ng-form>
+    </ion-content>
+
+
+</ion-view>

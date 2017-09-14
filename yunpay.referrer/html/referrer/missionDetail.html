@@ -1,0 +1,93 @@
+<ion-view view-title = '任务详情' class = 'spp-missionDetail bg_f0f0f0'>
+	<ion-nav-bar class="bar-stable" >
+		<ion-nav-back-button ng-show="">
+			返回
+		</ion-nav-back-button>
+	</ion-nav-bar>
+	
+	<ion-nav-buttons side="left" >
+		<div class="contractInfo_btn_choise" ng-click="fun.goback()">
+			<i class="icon ion-ios-arrow-back"></i><span>返回</span>
+		</div>        
+    </ion-nav-buttons>
+	<ion-content>
+		<ion-list>
+			<ion-item class= 'chitInfo'>
+				<div class="chitInfoDetail">
+					<div class='shopImg'>
+						<img ng-src="{{data.missionInfo.doorway}}"/>
+					</div>
+					<div class="textInfo">
+						<p class="chitKind">
+							{{data.missionInfo.allName}}
+						</p>
+						<p class="otherInfo margin-top-8">
+							卡券类型：{{data.missionInfo.couponName}}
+						</p>
+						<p class="otherInfo">
+							卡券面额：{{data.missionInfo.couponFaceValue}}元
+						</p>
+						<p class="otherInfo">
+							使用条件：每笔订单满{{data.missionInfo.useMinValue|number:2}}元可用
+						</p>
+						<p class="otherInfo">
+							券有效期：领取当日起{{data.missionInfo.validDay}}天
+						</p>
+						<div ng-show="data.flexTogggle">
+							<p class="otherInfo">
+								核销数量：{{data.missionInfo.writeoffNumber}}张
+							</p>
+							<p class="otherInfo">
+								发行数量：{{data.missionInfo.count}}张
+							</p>
+							<p class="otherInfo">
+								发行店铺：{{data.missionInfo.name}}（{{data.missionInfo.branchName}}）
+							</p>
+							<p class="otherInfo">
+								温馨提示：{{data.missionInfo.cozyCue}}
+							</p>
+						</div>						
+					</div>	
+				</div>
+				<div class="flexTogggle" ng-click="fun.changeFlexToggle()">
+					<span ng-show="!data.flexTogggle">
+						<span><i class="icon ion-ios-arrow-down"></i></span><span class="text">更多</span>
+					</span>
+					<span ng-show="data.flexTogggle">
+						<span><i class="icon ion-ios-arrow-up"></i></span><span class="text">收起</span>
+					</span>
+				</div>
+			</ion-item>
+			
+			<ion-item class='canGet'>
+				<p class="cell" ng-show="data.missionInfo.commisionCountWay==1">
+					佣金比例:{{(data.missionInfo.commisionValue*100)|number:2}}%/单({{data.missionInfo.commisionMaxAmount}}元封顶)
+				</p>
+				<p class="cell" ng-show="data.missionInfo.commisionCountWay==2">
+					佣金金额:{{data.missionInfo.commisionValue}}元/单
+				</p>
+				<p class="cell">
+					推广时间：{{data.missionInfo.beginTime|limitTo:10}}至{{data.missionInfo.endTime|limitTo:10}}
+				</p>
+				<p class="lookXieYi" ng-click="fun.goPopularizeXieYi()">
+					<span>查看在线协议</span>
+				</p>
+			</ion-item>
+			
+			<ion-item class='waringText item-text-wrap'> 
+				<p>温馨提示</p>
+				<p>1.先点击“领取任务”。</p>
+				<p>2.进入您的已领取任务列表，将卡券推荐给好友。</p>
+				<p>3.每推荐一位顾客到店消费并成功使用卡券，推荐人将获得此订单支付金额2.00%的佣金，超出分佣封顶金额不再计算为佣金。</p>
+				<p>4.每位用户限领一张。</p>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+	<div id='footer' class="noborder bg_f0f0f0 btn-footer">
+		<button class="button button-block "
+			ng-class="{'button-positive':data.missionInfo.isDraw,'button-gray':!data.missionInfo.isDraw}"
+			ng-click="fun.getThisMission()">
+            {{data.btnContent}}
+        </button>
+	</div>
+</ion-view>

@@ -1,0 +1,33 @@
+<ion-view  view-title="流水明细" class="bg_f0f0f0 spp-moneyDetail">
+  <ion-content>
+  	<ion-list>
+			<ion-item class="item-divider row ssp-search">
+				<p class="col col-70">
+					<span class="color_a2a2a2">{{data.time}}　累计:{{data.amount|number:2}}元</span>				
+				</p>
+				<p class="col col-30">
+					<select
+							class="ssp-select float_right"
+							ng-model="data.checkShop"
+							ng-change="fun.changshop()"
+					>
+						<option selected="">全部</option>
+						<option>个人</option>
+						<option>商家</option>
+						<option>平台</option>
+						<option>代理</option>
+						<option>推广佣金</option>
+					</select>
+				</p>			
+			</ion-item>	
+			<ion-item class='row more-height' ng-repeat="item in data.CommissionListEnd">
+				<p class="col col-50">
+					{{item.shopName||'旗舰店'}}
+				</p>
+				<p class="col col-50 text-right">
+					{{item.commissionAmount|number:2}}
+				</p>
+			</ion-item>
+  	</ion-list>	   
+  </ion-content>
+</ion-view>

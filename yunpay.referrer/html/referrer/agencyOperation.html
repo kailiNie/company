@@ -1,0 +1,73 @@
+<ion-view view-title='推荐代理' class='bg_f0f0f0 spp-agencyOperation'>
+	<ion-content>
+		<ion-list>
+			<ion-item class='full_img'>
+				<img src="img/agency-operation1.png"/>
+			</ion-item>
+			<ion-item class='full_img margin_gotop'>
+				<img src="img/agency-operation2.png"/>
+			</ion-item>
+			<ion-item class='full_img margin_gotop'>
+				<img src="img/agency-operation3.png"/>
+				<div class="form">
+					<ng-form name='form1' ng-controller="agencyOperation">
+						<ion-list class='spp-form'>
+							<ion-item class="item-input ">
+					          <label class='title' for="Name">*姓　名</label>
+					          <input
+					            type="text"
+					            ng-model="data.Name"
+					            name="Name"
+					            placeholder="联系人姓名"
+					            required
+					            ccp_input_close/>
+					        </ion-item>
+							<ion-item class="item-input ">
+					          <label class='title' for="userPhone">*电　话</label>
+					          <input
+					            type="tel"
+					            ng-model="data.userPhone"
+					            name="userPhone"
+					            placeholder="联系人电话"
+					            phone
+					            required
+					            ccp_input_close/>
+					        </ion-item>
+					        <ion-item>
+					        	<p class='title'>*意向合作区域（省市）</p>					        	
+					        </ion-item>
+					        <ion-item class="item-input ">
+					        	<textarea 
+					        		class="only_input"
+						            type="text"
+						            ng-model="data.Address"
+						            name="Address"
+						            placeholder="详细地址"
+						            required
+						            ccp_input_close 
+					        		rows="5">
+					        	</textarea>
+					        </ion-item>
+					        <ion-item class="item-input" ng-show="!data.hasinvitationCode">
+					          <label class='title' for="inviterCode">邀请码</label>
+					          <input
+					            type="text"
+					            ng-model="data.invitationCode"
+					            name="invitationCode"
+					            placeholder="邀请码"
+					            required
+					            ccp_input_close/>
+					        </ion-item>
+					        <ion-item class="item-input" ng-show="data.hasinvitationCode">
+					          <p class="title">邀请码：{{data.hasinvitationCode}}</p>
+					        </ion-item>
+					        <ion-item class='submit_btn'>
+					        	<img src="img/submit_btn.png" ng-click="fun.userRegist()"/>
+					        </ion-item>
+						</ion-list>
+					</ng-form>
+				</div>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

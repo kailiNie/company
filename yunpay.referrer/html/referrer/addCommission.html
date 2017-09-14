@@ -1,0 +1,41 @@
+<ion-view  view-title="累计佣金" class="bg_f0f0f0 spp-addCommission">
+  <ion-content>
+  	<ion-list>
+  		<ion-item class='no_border bg_83b2f6 text-center total_money'>
+				<p class="color_fff text">累计佣金（元）</p>
+				<p class="color_fff money">{{(data.ReferrerAccount.totalAmount||'0.00')|number:2}}</p>
+			</ion-item>
+			<div class="division-bar"></div>
+			<ion-item class='bar-money' ng-repeat="item in data.CommisstionMoney | orderBy:'-createTime' track by $index" ng-click="fun.goMoneyDetail(item.id,item.createTime,item.amount)">
+				<div class="row bg_c7c7c7">
+					<div class="col col-50 color_fff">
+						{{item.createTime}}
+					</div>
+					<div class="col col-50 color_fff text-right">
+						{{item.amount|number:2}}
+					</div>
+				</div>
+			</ion-item>
+			<ion-item class="padding0 noborder pageInitNoResult"
+                  ng-show="page.CommisstionMoney.initNoResultShow()">
+
+            <p class="padding5 color_969696 text-center bg_f0f0f0">没有佣金数据</p>
+
+        </ion-item>
+
+        <ion-item class="padding0 noborder pageUpNoResult"
+                  ng-show="(!page.CommisstionMoney.initNoResultShow() && page.CommisstionMoney.upNoResultShow())">
+
+            <p class="padding5 color_969696 text-center bg_f0f0f0">没有更多数据</p>
+
+        </ion-item>
+    </ion-list>
+
+    <ion-infinite-scroll
+            ng-if="!page.CommisstionMoney.upNoResultShow()"
+            on-infinite="page.CommisstionMoney.up()"
+            immediate-check="false">
+
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

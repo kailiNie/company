@@ -1,0 +1,126 @@
+<ion-view  view-title="{{data.title}}详情" class="bg_f0f0f0 spp-transactionDetail">
+  <ion-content>
+  	<ion-list>
+  		<div class="division-bar"></div>
+		<ion-item class='row' ng-show="data.stateEN=='succeed'">
+			<div class="col col-30 color_a2a2a2">
+				订单号
+			</div>
+			<div class="col col-70 text-right">
+				{{data.Info.orderNo}}
+			</div>
+		</ion-item>	
+		<ion-item class='row' ng-show="data.stateEN=='succeed'">
+			<div class="col col-30 color_a2a2a2">
+				流水号
+			</div>
+			<div class="col col-70 text-right">
+				{{data.Info.serialNumber}}
+			</div>
+		</ion-item>	
+		<ion-item class='row' ng-show="data.stateEN=='succeed'">
+			<div class="col col-30 color_a2a2a2">
+				类型
+			</div>
+			<div class="col col-70 text-right">
+				{{data.title}}
+			</div>
+		</ion-item>	
+		<ion-item class='row' ng-show="data.stateEN=='succeed'">
+			<div class="col col-30 color_a2a2a2">
+				支出
+			</div>
+			<div class="col col-70 text-right">
+				{{data.type==2?data.Info.withdrawalAmount:data.Info.fee | number:2}}元
+			</div>
+		</ion-item>	
+		<ion-item class='row' ng-show="data.stateEN=='succeed'">
+			<div class="col col-30 color_a2a2a2">
+				时间
+			</div>
+			<div class="col col-70 text-right">
+				{{data.time}}
+			</div>
+		</ion-item>	
+		<ion-item class='row' ng-show="data.stateEN=='succeed' && data.type == 3">
+			<div class="col col-30 color_a2a2a2">
+				余额
+			</div>
+			<div class="col col-70 text-right">
+				{{data.Info.balance|number:2}}元
+			</div>
+		</ion-item>	
+		<ion-item class='row' ng-show="data.stateEN!='succeed'">
+			<div class="col col-30 color_a2a2a2">
+				提现方式
+			</div>
+			<div class="col col-70 text-right">
+				{{data.Info.bankName}}({{data.Info.bankCardNoLastFour}})
+			</div>
+		</ion-item>	
+		<ion-item class='row' ng-show="data.stateEN!='succeed'">
+			<div class="col col-30 color_a2a2a2">
+				提现申请时间
+			</div>
+			<div class="col col-70 text-right">
+				{{data.time}}
+			</div>
+		</ion-item>	
+		<ion-item class='row' ng-show="data.stateEN!='succeed'">
+			<div class="col col-30 color_a2a2a2">
+				提现状态
+			</div>
+			<div class="col col-70 text-right" ng-show="data.stateEN=='defeat'">
+				提现金额已退回
+			</div>
+			<div class="col col-70 text-right" ng-show="data.stateEN=='wait'">
+				提现审核转账中
+			</div>
+		</ion-item>	
+		<ion-item class='row' ng-show="data.stateEN!='succeed'">
+			<div class="col col-30 color_a2a2a2" ng-show="data.stateEN=='defeat'">
+				退款原因
+			</div>
+			<div class="col col-30 color_a2a2a2" ng-show="data.stateEN=='wait'">
+				等待原因
+			</div>
+			<div class="col col-70 text-right">
+				{{data.stateName}}
+			</div>
+		</ion-item>	
+		<ion-item class='row' ng-show="data.stateEN!='succeed'">
+			<div class="col col-30 color_a2a2a2">
+				提现金额
+			</div>
+			<div class="col col-70 text-right">
+				{{data.Info.withdrawalAmount|number:2}}元
+			</div>
+		</ion-item>	
+		<ion-item class='row' ng-show="data.type==2">
+			<div class="col col-30 color_a2a2a2">
+				手续费
+			</div>
+			<div class="col col-70 text-right">
+				{{data.Info.fee|number:2}}元
+			</div>
+		</ion-item>	
+		<ion-item class='row' ng-show="data.stateEN=='succeed' && data.type == 3">
+			<div class="col col-30 color_a2a2a2">
+				备注
+			</div>
+			<div class="col col-70 text-right">
+				提现手续费<br /><a href="#/referrer/transactionDetail/2/{{data.state}}/{{data.orderId}}/{{data.time}}">【{{data.Info.orderNo}}】</a>
+			</div>
+		</ion-item>	
+		<ion-item class='row' ng-show="data.stateEN=='succeed' && data.type == 2">
+			<div class="col col-30 color_a2a2a2">
+				实际到账金额
+			</div>
+			<div class="col col-70 text-right">
+				{{data.Info.arrivalAmount|number:2}}元
+			</div>
+		</ion-item>			
+  	</ion-list>	   
+  </ion-content>
+</ion-view>
+

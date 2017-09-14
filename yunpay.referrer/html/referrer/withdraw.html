@@ -1,0 +1,113 @@
+<ion-view  view-title="提现" class="bg_f0f0f0">
+
+    <!--<ion-nav-bar class="bar-stable">
+
+        <ion-nav-back-button ng-click="fun.back()">
+            返回
+        </ion-nav-back-button>
+
+    </ion-nav-bar>-->
+
+    <ion-content  ng-show="!data.user.isSetSecurityPwd">
+        <ion-list >
+            <ion-item class="bg_f0f0f0 text-center noborder">
+                <p>提现需要安全密码,</p>
+                <a href="#/referrer/changePassword">点击设置安全密码</a>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+
+    <ion-content class="withdraw" ng-show="data.user.isSetSecurityPwd">
+
+        <div class="row text-center" ng-show="data.withdrawalType!=3">
+            <div class="col" ng-click="fun.show(2)" ng-class="{'color_387ef5':data.withdrawalType==2}">提现到银行卡</div>
+            <div class="col" ng-click="fun.show(1)" ng-class="{'color_387ef5':data.withdrawalType==1}">提现到微信</div>
+        </div>
+
+        <!--没有银行卡体现权限-->
+        <ion-list ng-show="!data.tixianMothed.bank && data.withdrawalType==2">
+            <ion-item class="bg_f0f0f0 noborder text-center">
+                <a>暂时不提供银行卡提现功能,请选择其他方式</a>
+            </ion-item>
+        </ion-list>
+
+        <!--没有微信体现权限-->
+        <ion-list ng-show="!data.tixianMothed.weixin && data.withdrawalType==1">
+            <ion-item class="bg_f0f0f0 noborder text-center">
+                <a>暂时不提供微信提现功能,请选择其他方式</a>
+            </ion-item>
+        </ion-list>
+
+        <!--没有银行卡-->
+        <ion-list ng-show="data.tixianMothed.bank && !data.showBankMethod && data.withdrawalType==2">
+            <ion-item class="bg_f0f0f0 noborder text-center">
+                <a href="#/referrer/myBankCard">没有银行卡信息,请先绑定银行卡.</a>
+            </ion-item>
+        </ion-list>
+
+        <!--提取余额-->
+        <ion-list ng-show="(
+         (data.tixianMothed.weixin && data.withdrawalType==1) ||
+         (data.tixianMothed.bank && data.showBankMethod && data.withdrawalType==2))">
+            <ion-item class="item-icon-left" ng-click="fun.show(3)" ng-show="data.withdrawalType==2">
+                <i class="iconfont bankinco {{data.cardChecked.desc.icon}}"></i>
+                <span>{{data.cardChecked.bankName}}</span>
+                <span class="item-note">100元起提，手续费1元/笔</span>
+            </ion-item>
+            <ion-item class="item-icon-left" ng-show="data.withdrawalType==1">
+                <img ng-src="{{data.user.headUrl?data.user.headUrl:'img/smileOn.jpg'}}">
+                {{data.user.nickName || '暂无微信昵称'}}
+                <span class="item-note">100元起提，手续费1元/笔</span>
+            </ion-item>
+            <ion-item class="item-input withdrawNum">
+                <span class="input-label ">￥</span>
+                <input
+                        type="text"
+                        class="text-right"
+                        ng-focus="fun.clearAmount()"
+                        ng-change="fun.changeAmount()"
+                        ng-model="data.user.amount">
+            </ion-item>
+            <ion-item>
+                <!--<span ng-show="!data.post.amount">账户余额：{{data.user.withdrawalAmount}}</span>-->
+                <span>{{data.user.withdrawalAmountText}}</span>
+                <a style="float: right" class="right" ng-click="fun.getAll()">全部转出</a>
+            </ion-item>
+            <ion-item class="item-divider" style="min-height: 15px;padding:0px;">
+            </ion-item>
+
+            <ion-item class="noborder bg_f0f0f0">
+                <button
+                        ng-disabled="!data.showBtn"
+                        class="button button-block button-positive"
+                        ng-click="fun.save()">确认提现
+                </button>
+            </ion-item>
+        </ion-list>
+
+        <!--银行卡选择-->
+        <ion-list class="bank" ng-show="data.withdrawalType==3">
+            <ion-item
+                    class="bankCardWapper"
+                    ng-repeat="item in data.bank"
+                    ng-click="fun.getCard(item)">
+                <div class="bgicon">
+                    <span class="iconfont {{item.desc.icon}}"></span>
+                </div>
+                <div class="bankCard {{item.desc.bgColor||'bank_436bb0'}}">
+                    <div class="iconLeft">
+                        <i class="iconfont {{item.desc.icon}}"></i>
+                    </div>
+
+                    <div class="bankText">
+                        <p class="font_18 font_bold">{{item.bankName}}</p>
+                        <p class="font_24 margin-top-10 text-left font_bold">
+                            {{fun.getShowBankNo(item.cardNo)}}
+                        </p>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+
+    </ion-content>
+</ion-view>

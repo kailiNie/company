@@ -1,0 +1,78 @@
+<ion-view view-title="我的任务" class="spp-myMission bg_f0f0f0">
+	<ion-nav-buttons side="right">
+		<div class="btn_choise_fourWord" ng-click="fun.goMyCommission()">
+			<span>我的佣金</span>
+		</div>
+	</ion-nav-buttons>
+	<ion-content class = "content">
+		<ion-list class ="cardBag">
+			<ion-item class="hasNoChit" ng-show="page.initNoResultShow()">
+				<div class="border">
+					点击下方"领取任务赚钱"领取任务，开启赚钱模式。
+				</div>
+			</ion-item>
+			
+			<ion-item class='missionCell' ng-repeat="item in data.missionList">
+				<div class="missionInfo" ng-click="fun.goMissionDetail(item)">
+					<div class="shopImg">
+						<img ng-src="{{item.doorway}}"/>
+					</div>
+					<p class="chitName">
+						{{item.allName}}
+					</p>
+					<p class="commission" ng-show="item.commisionCountWay==1">
+						佣金比例：{{(item.commisionValue*100)|number:2}}%/单({{item.commisionMaxAmount}}元封顶)
+					</p>
+					<p class="commission" ng-show="item.commisionCountWay==2">
+						佣金金额：{{item.commisionValue}}元/单
+					</p>
+					<p class="missionTime">
+						推广时间：{{item.beginTime|limitTo:10}}至{{item.endTime|limitTo:10}}
+					</p>
+				</div>
+				<div class="missionToggle row">
+					<div class="col col-60">
+						<div class="shopLogo">
+							<img ng-src="{{item.logo}}"/>
+						</div>
+						<div class="shopName">
+							<p>{{item.name}}（{{item.branchName}}）</p>
+						</div>
+					</div>
+					<div class="col col-40">
+						<div class="btn" ng-class="{'going':item.state==1,'overed':item.state==2}">
+							{{item.stateName}}
+						</div>
+					</div>
+				</div>
+			</ion-item>
+			
+			
+			<!--<ion-item class="padding0 noborder pageinitnoresult"
+                      ng-show="page.initNoResultShow()">
+
+                <p class="padding5 color_969696 text-center bg_f0f0f0">当前没有任务</p>
+
+            </ion-item>-->
+
+            <ion-item class="padding0 noborder pageUpNoResult"
+                      ng-show="(!page.initNoResultShow() && page.upNoResultShow())">
+
+                <p class="padding5 color_969696 text-center bg_f0f0f0">没有更多任务</p>
+
+            </ion-item>
+        </ion-list>
+
+
+        <ion-infinite-scroll
+                ng-if="!page.upNoResultShow()"
+                on-infinite="page.up()"
+                immediate-check="false">
+        </ion-infinite-scroll>
+	</ion-content>
+	<div id='footer' class="noborder bg_f0f0f0 btn-footer">
+		<button class="button button-block button-positive" ng-click="fun.goMissionMarket()">
+            领取任务赚钱
+        </button>
+	</div>		
+</ion-view>

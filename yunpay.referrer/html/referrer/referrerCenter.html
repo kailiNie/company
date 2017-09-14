@@ -1,0 +1,105 @@
+<ion-view  view-title="云付推客-推荐人中心" class="bg_f0f0f0 spp-referrerCenter">
+	<ion-nav-bar class="bar-stable">
+	  <ion-nav-back-button ng-show="">
+	    返回
+	  </ion-nav-back-button>
+	</ion-nav-bar>
+  <ion-content class="padding-top ">
+		<ion-list>
+			<ion-item class='row no_border'>
+				<div class="col col-50 color_a2a2a2 font_12">
+					我的邀请码：<span class="color_3d3d3d font_16">{{data.invitationCode}}</span>
+				</div>
+				<a 
+					class="col col-50 text-right font_14 color_387ef5" 
+					id="d_clip_button" 
+					data-clipboard-text="{{data.invitationCode}}" 
+					ng-click="fun.copyReferralCode()">
+					点我复制
+				</a>
+			</ion-item>
+			<ion-item class='no_border bg_83b2f6 text-center yesterday_money' ng-click="fun.goAddCommission()">
+				<p class="color_fff text">昨日佣金（元）</p>
+				<p class="color_fff money">{{data.commisstionAmoun|number:2}}</p>
+			</ion-item>
+			<ion-item class='no_border has_div'>
+				<div class="row width_90">
+					<div class="col col-50" ng-click="fun.goBalanceDetail()">
+						佣金余额（元）
+					</div>				
+					<div class="col col-35" ng-click="fun.goBalanceDetail()">
+						{{data.balanceAmount|number:2}}<i class="icon ion-ios-arrow-right"></i>
+					</div>	
+					<div class="col col-15 font_14" ng-click="fun.goWithdraw()">
+					提现
+					</div>					
+				</div>				
+			</ion-item>
+			<ion-item class='no_border row safe_info' ng-click="fun.goSafeInfo()">
+				<div class="col col-25">
+					安全信息
+				</div>
+				<div class="col col-75 text-right">
+					账号、银行卡号、安全密码　<i class="icon ion-ios-arrow-right"></i>
+				</div>
+			</ion-item>
+			<ion-item class='goToMackMoney' ng-click="fun.goMissionMarket()">
+				<div class="icon">
+					<i class="iconfont spp-huodong"></i>
+				</div>
+				<p class="float_left">推广分佣，赚钱如此轻松！</p>
+				<p class="float_right">>>领取任务</p>
+			</ion-item>
+			<ion-item class="no_border for_help row">
+				<div class="col col-55">
+					<span class="logo_img"><img src="img/notext-logo.png"/></span>云付业务
+				</div>
+				<div class="col col-45 text-right" ng-click="fun.goReferrerIntroduce()">
+					<span class="btn-help">
+						<span class="circle"><span>?</span></span>
+					</span>					
+				</div>
+			</ion-item>
+			<ion-item class='operation row' ng-click="fun.goPersonageOperation()">
+				<div class="col col-10"></div>
+				<div class="content col col-80">
+					<h3 class="title">个人收款业务</h3>
+					<p class="text">快速开通，即开即用，无需任何费用，<br />多通道、快速收款、提现秒到。</p>
+				</div>
+				<div class="col col-10 go-icon">
+					<i class="icon ion-ios-arrow-right"></i>
+				</div>
+			</ion-item>
+			<ion-item class='operation row' ng-click="fun.goMerchantOperation()">
+				<div class="col col-10"></div>
+				<div class="content col col-80">
+					<h3 class="title">商家收银业务</h3>
+					<p class="text">强大的支付系统、店铺管理系统、营销<br />系统、高效率实现交易闭环。让店铺快速迈入移动互联网+的时代。</p>
+				</div>
+				<div class="col col-10 go-icon">
+					<i class="icon ion-ios-arrow-right"></i>
+				</div>
+			</ion-item>
+			<ion-item class='operation row' ng-click="fun.goPlatformOperation()">
+				<div class="col col-10"></div>
+				<div class="content col col-80">
+					<h3 class="title">平台支付对接</h3>
+					<p class="text">一套最具灵活的组合平台支付工具，只<br />提供技术方案，不参与资金清算，0成本快速接入，安全省心高效的支付系统。</p>
+				</div>
+				<div class="col col-10 go-icon">
+					<i class="icon ion-ios-arrow-right"></i>
+				</div>
+			</ion-item>
+			<ion-item class='operation row' ng-click="fun.goAgencyOperation()">
+				<div class="col col-10"></div>
+				<div class="content col col-80">
+					<h3 class="title">代理/合伙人</h3>
+					<p class="text">现全国招募代理合伙人，共同拓展市场，<br />共同分享支付行业大蛋糕！</p>
+				</div>
+				<div class="col col-10 go-icon">
+					<i class="icon ion-ios-arrow-right"></i>
+				</div>
+			</ion-item>
+		</ion-list>
+  </ion-content>
+</ion-view>

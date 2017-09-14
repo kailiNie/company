@@ -1,0 +1,25 @@
+<ion-view  view-title="余额明细" class="bg_f0f0f0 spp-balanceDetail">
+  <ion-content>
+  	<ion-list>
+			<div class="division-bar"></div>
+			<ion-item class='NoContent' ng-show="data.nodata">
+				暂无明细数据!
+			</ion-item>
+			<ion-item class='row content' ng-repeat="item in data.detail" ng-click="fun.goTransactionDetail(item.type,item.state,item.orderId,item.createTime)">
+				<div class="col col-50 name-time">
+					<p class="name">{{item.title}}</p>
+					<p class="time">{{item.createTime}}</p>
+				</div>
+				<div class="col col-50 text-right money">					
+					<i ng-show="item.type!=1" class="icon ion-ios-arrow-right"></i>
+					<p>
+						<span ng-show="!item.isInFlow">-</span>
+						<span ng-show="item.isInFlow">+</span>
+						{{item.amount|number:2}}<br />
+						<span class="color_dc4b39 font_12" ng-show="item.type!=1&&item.state!=4">{{item.stateName}}</span>
+					</p>
+				</div>
+			</ion-item>
+  	</ion-list>	   
+  </ion-content>
+</ion-view>

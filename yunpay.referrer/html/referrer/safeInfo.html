@@ -1,0 +1,54 @@
+<ion-view view-title='安全信息' class='bg_f0f0f0 spp-safeInfo'>
+	<ion-content class='padding-top'>
+		<ion-list>
+			<ion-item class='userPhone'>
+				<div class="userHeaderImg">
+					<img ng-src="{{data.headPortrait?data.headPortrait:'img/smileOn.jpg'}}"/>
+				</div>
+				<div class="phone">
+					账号（{{data.phoneNumber}}）
+				</div>
+				<div class="color_a2a2a2 float_right">
+					{{data.stateName}}<i class="icon ion-ios-arrow-right"></i>
+				</div>
+			</ion-item>
+			<ion-item ng-show="!data.realName" ng-click="fun.goRealNameApprove()">
+				<div class="float_left">
+					真实姓名
+				</div>
+				<div class="color_a2a2a2 float_right">
+					请填写<i class="icon ion-ios-arrow-right"></i>
+				</div>
+			</ion-item>
+			<ion-item ng-show="data.realName">
+				<div class="float_left">
+					真实姓名
+				</div>
+				<div class="float_right">
+					<span class="icon-yishiming">
+						已实名
+					</span>
+					<span class="name">
+						{{data.realName}}
+					</span>
+				</div>
+			</ion-item>
+			<ion-item ng-click="fun.goMyBankCard()">
+				<div class="float_left">
+					我的银行卡
+				</div>
+				<div class="color_a2a2a2 float_right">
+					<i class="icon ion-ios-arrow-right"></i>
+				</div>
+			</ion-item>
+			<ion-item ng-click="fun.goChangePassword()">
+				<div class="float_left">
+					修改安全密码
+				</div>
+				<div class="color_a2a2a2 float_right">
+					<i class="icon ion-ios-arrow-right"></i>
+				</div>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

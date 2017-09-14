@@ -1,0 +1,98 @@
+<ion-view view-title='实名认证' class='bg_f0f0f0 spp-realNameApprove'>
+	<ion-content>
+		<div class="waringText">
+			<span>*须实名认证，</span>认证通过只能绑定实名下的银行卡
+		</div>
+		<ng-form name="form1" ng-controller="realNameApprove">
+	      <ion-list>
+	      	<ion-item class="item-input ">
+	      	  <label for="realName">真实姓名</label>
+	          <input
+	          	  class="text-right"
+                  type="text"
+                  ng-model="data.user.realName"
+                  name="realName"
+                  placeholder="请填写真实姓名"
+                  ccp_input_close
+                  maxlength="12"
+                  required/>
+	        </ion-item>
+	        
+	        <ion-item class="item-input">
+	          <label for="idCard">身份证号码</label>
+	          <input
+	          		  class="text-right"
+	                  type="text"
+	                  ng-model="data.user.idCard"
+	                  name="idCard"
+	                  placeholder="请填写身份证号"
+	                  ccp_input_close
+	                  idcard
+	                  required/>
+	        </ion-item>
+	        
+	        <ion-item class="item-input">
+	        	<label for="bankCardNo">卡号</label>
+                <input
+                		class="text-right"
+                        type="tel"
+                        placeholder="请填写银行卡号"
+                        name="bankCardNo"
+                        ng-model="data.user.bankCardNo"
+                        ccp_input_close
+                        ng-blur="fun.showBankInfo()"
+                        required>
+            </ion-item>
+	      	
+	        <ion-item class="item-input ">
+	          <label for="userPhone">手机号</label>
+	          <input
+	          	class="text-right"
+	            type="tel"
+	            ng-model="data.user.userPhone"
+	            name="userPhone"
+	            placeholder="请填写银行预留手机号码"
+	            ccp_input_close
+	            phone
+	            required/>
+	        </ion-item>
+	        	
+	        <ion-item class="item-input item-button-right">
+	          <label for="phoneCode">验证码</label>
+	          <input
+	          	class="text-right realNameApprove-phoneCode"
+	            type="tel"
+	            ng-model="data.user.phoneCode"
+	            name="phoneCode"
+	            placeholder="请输入短信验证码"
+	            send_phone_code
+	            phonecode
+	            required/>
+	        </ion-item>
+
+	        <ion-item class="item-checkbox noborder spp-arget bg_f0f0f0" >
+	
+	          <label class="checkbox">
+	            <input type="checkbox" value="true" ng-model="data.isArget"/>
+	          </label>
+	          <span class="font_color_9e9e9e font_12">同意</span>
+	          <a class="xieyi nodecoration font_12" href="#/merchants/userArget">
+	            《万众云付服务协议》
+	          </a>
+	        </ion-item>
+	
+	        <ion-item class="padding noborder bg_f0f0f0 btn-pagesingle">
+	          <button class="button button-block button-positive"
+	                  ng-disabled="!data.isArget"
+	                  ng-click="fun.userRegist()">
+	            提交认证
+	          </button>
+	        </ion-item>
+	        
+	        <ion-item ng-show="showVoiceValidateToggle" class = 'voiceValidate' id='VoiceValidate'>
+        	收不到短信，<a ng-click="getVoiceValidate()">接听电话</a>获取验证码
+        </ion-item>
+	        
+	    </ng-form>
+	</ion-content>
+</ion-view>

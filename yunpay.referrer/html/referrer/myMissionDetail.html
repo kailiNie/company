@@ -1,0 +1,98 @@
+<ion-view view-title = '任务详情' class = 'spp-myMissionDetail bg_f0f0f0'>
+	<ion-nav-bar class="bar-stable">
+		<ion-nav-back-button ng-click="fun.goback()">
+			返回
+		</ion-nav-back-button>
+	</ion-nav-bar>
+	<ion-content >
+		<ion-list  ng-show="data.showIndex==1">
+			<ion-item class='item-divider headerTitle'>
+				<div class="row">
+					<div class="col col-65">
+						{{data.getInfo.allName}}
+					</div>
+					<div class="col col-35">
+						<div class="border" ng-class="{'blueBtn':data.getInfo.data.state==1,'grayBtn':data.getInfo.data.state!=1}">
+							{{data.getInfo.data.stateName}}
+						</div>
+					</div>	
+				</div>				
+			</ion-item>
+			<ion-item class='moneyInfo'>
+				<div class="upContent">
+					<div class="row">
+						<div class="col col-50 br">
+							<p class="moneyText">已结佣金</p>
+							<p class="moneyAmount">￥{{data.getInfo.commissionKnot}}</p>
+						</div>
+						<div class="col col-50">
+							<p class="moneyText">待结佣金</p>
+							<p class="moneyAmount">￥{{data.getInfo.commissionWait}}</p>
+						</div>
+					</div>
+					<div class="icon" ng-click="fun.showHelpPopover()">
+						<span id="showTips" hidden="true"></span>
+						<i  class="iconfont spp-wenhao"></i>
+					</div>
+				</div>
+				<div class="downContent">
+					<p><span>· 券领取数量：</span>{{data.getInfo.couponReceiveNumber}}次</p>
+					<p><span>· 券核销数量：</span>{{data.getInfo.couponWriteoffNumber}}张</p>
+					<p><span>· 订单交易额：</span>{{data.getInfo.orderTotal}}元</p>
+				</div>
+			</ion-item>
+			<ion-item class='timeInfo'>
+				<p ng-show="data.getInfo.data.commisionCountWay==1"><span>分佣比例：</span>{{(data.getInfo.data.commisionValue*100)|number:2}}%/单（{{data.getInfo.data.commisionMaxAmount}}元封顶）</p>
+				<p ng-show="data.getInfo.data.commisionCountWay==2"><span>佣金金额：</span>{{data.getInfo.data.commisionValue}}元/单</p>
+				<p><span>推广时间：</span>{{data.getInfo.data.beginTime|limitTo:10}} 至 {{data.getInfo.data.endTime|limitTo:10}}</p>
+				<p class="xieyi" ng-click="fun.goPopularizeXieYi()"><span>查看在线协议</span></p>
+			</ion-item>
+			<ion-item class='shopInfo'>
+				<p class="shopInfoTitle">{{data.getInfo.data.name}}（{{data.getInfo.data.branchName}}）</p>
+				<p><span>卡券类型：</span>{{data.getInfo.data.couponName}}</p>
+				<p><span>卡券面额：</span>{{data.getInfo.data.couponFaceValue}}元</p>
+				<p><span>使用条件：</span>每笔订单满{{data.getInfo.data.useMinValue|number:2}}元可用</p>
+				<p><span>券有效期：</span>领券即日起{{data.getInfo.data.validDay}}天</p>
+				<p><span>发放店铺：</span>{{data.getInfo.data.name}}（{{data.getInfo.data.branchName}}）</p>
+				<p class="address"><span>店铺地址：</span>{{data.getInfo.shopAddress}}</p>
+				<div class="icon" ng-click="fun.showMap()">
+					<i class="iconfont spp-dizhi"></i>
+				</div>
+			</ion-item>
+			<ion-item class='item-divider shareInfo' ng-show="data.getInfo.data.state==1">
+				<div class='QRcode'>
+					<div class="border">
+						<img data-tap-disabled='true' ng-src="{{data.getInfo.qrCodeCoupon}}"/>
+					</div>					
+				</div>
+				<p class="tips">卡券分享二维码</p>
+				<p class='copyBtn'
+					id="d_clip_button" 
+					data-clipboard-text="{{data.pageUrl}}" 
+					ng-click="fun.copyReferralCode()">点我复制卡券连接</p>
+			</ion-item>
+		</ion-list>
+		
+		<div
+                id="qqmap"
+                class="ssp-qq-map"
+                data-tap-disabled="true"
+                style="height: {{data.mapHeight}};"
+                ng-show="data.showIndex==2">
+
+            <iframe id="mapPage"
+                    width="100%"
+                    height="100%"
+                    frameborder=0
+                    ng-src={{data.mapSrc}}
+                    >
+            </iframe>
+
+        </div>
+	</ion-content>
+	<div class="noborder bg_f0f0f0 btn-footer" ng-show="data.showIndex==1&&data.getInfo.data.state==1">
+		<button class="button button-block button-positive" id="shareModal" ng-click="fun.showSharePopover()">
+            推广分享给好友
+        </button>
+	</div>	
+</ion-view>

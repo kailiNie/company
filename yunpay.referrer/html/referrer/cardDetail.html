@@ -1,0 +1,42 @@
+<ion-view view-title="银行卡详情" class="myCards-box bank bg_f0f0f0">
+    <ion-content class="padding-top">
+    	
+    	<ion-list ng-show="!user.hasPwd">
+            <ion-item class="bg_f0f0f0 text-center noborder">
+                <p>绑定银行卡需要安全密码,</p>
+                <a href="#/referrer/changePassword">点击设置安全密码</a>
+            </ion-item>
+        </ion-list>
+    	
+        <!--有银行卡时/-->
+        <ion-list ng-show="user.hasPwd">
+            <ion-item
+                    class="bankCardWapper">
+                <div class="bgicon">
+                    <span class="iconfont {{data.desc.icon}}"></span>
+                </div>
+                <div class="bankCard {{item.desc.bgColor||'bank_436bb0'}}">
+                    <div class="iconLeft">
+                        <i class="iconfont {{data.desc.icon}}"></i>
+                    </div>
+
+                    <div class="bankText">
+                        <p class="font_18 font_bold">{{data.bankName}}(尾号:{{data.cardNo}})</p>
+                        <p>创建时间:{{data.createTime}}</p>
+                        <!--<p class="font_12">&nbsp; {{data.fullName}}</p>-->
+                        <!--<p class="font_12">&nbsp; {{data.CardholderName}}</p>-->
+                        <p class="font_24 margin-top-10 text-left font_bold">
+                            <!--<span class="cardNo">**** **** **** </span>-->
+                            <!--{{data.bankCardNo}}-->
+                        </p>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+        <!--有银行卡时/-->
+
+        <div class="row addCard-btn">
+            <button class="button button-block bg_dc4b39" ng-click="fun.save()">解除绑定</button>
+        </div>
+    </ion-content>
+</ion-view>

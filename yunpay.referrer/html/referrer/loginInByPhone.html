@@ -1,0 +1,61 @@
+<ion-view  view-title="推荐人登录" class="bg_f0f0f0 ssp-loginInByPhone" novalidate="false">
+	<ion-nav-bar class="bar-stable" >
+        <ion-nav-back-button ng-show="">
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    
+    <ion-content class="padding-top ">
+
+        <ng-form name="form1" ng-controller="loginInByPhone">
+            <ion-list>
+                <ion-item class="item-input ">
+                    <label for="phone" class="font_16">手机号</label>
+                    <input
+                            type="tel"
+                            class="text-right margin-right-0"
+                            ng-model="data.user.userPhone"
+                            name="phone"
+                            placeholder="请填写手机号"
+                            yp-phone
+                            ng-trim='false'
+                            yp-trim 
+                            yp-must-phone
+                            required/>
+                </ion-item>
+             
+
+                <ion-item class="item-input item-button-right">
+                    <label for="verCode" class="font_16">验证码</label>
+                    <input
+                            type="tel"
+                            class="text-right margin-right"
+                            ng-model="data.user.phoneCode"
+                            name="verCode"
+                            placeholder="请填写验证码"
+                            send_phone_code
+                            yp-vercode
+                            ng-trim='false'
+                            yp-trim 
+                            yp-must-phone-code
+                            required/>
+                </ion-item>
+
+                <ion-item class="noborder bg_f0f0f0 btn-pagesingle">
+                    <button class="button button-block button-gray"
+                            ng-class = "{true:'button-gray',false:'button-positive'}[form1.$error.required!=undefined]"
+                            ng-disabled='form1.$error.required'
+                            ng-click="fun.userRegist(form1)">
+                             登录并绑定
+                    </button>
+                </ion-item>
+                
+                <ion-item ng-show="showVoiceValidateToggle" class = 'voiceValidate'  id='VoiceValidate'>
+		        	收不到短信，<a ng-click="getVoiceValidate()">接听电话</a>获取验证码
+		        </ion-item>
+
+            </ion-list>
+
+        </ng-form>
+
+    </ion-content>
+</ion-view>

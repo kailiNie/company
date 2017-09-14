@@ -1,0 +1,23 @@
+<ion-popover-view class="myMissionDetailModal">
+	<ion-content>
+		<div class="back-drop" ng-click="fun.closeHelpPopover()"></div>
+		<div class="modalContent">
+			<ion-item class = 'title'>
+				温馨提示
+			</ion-item>
+			<ion-item class = 'contentText item-text-wrap'>
+				<span class="strong">已结佣金：</span>
+				以天为单位已结算佣金额度，款项已转至推广者账户；<br />
+				商家请至商家的奖金账户查询；<br />
+				个人请至云付推客账户中查询。
+			</ion-item>
+			<ion-item class = 'contentText item-text-wrap'>
+				<span class="strong">待结佣金：</span>
+				当天产生的佣金，还未结算至推广者账户。
+			</ion-item>
+			<ion-item class = 'btn' ng-click="fun.closeHelpPopover()">
+				确认
+			</ion-item>
+		</div>
+	</ion-content>
+</ion-popover-view>

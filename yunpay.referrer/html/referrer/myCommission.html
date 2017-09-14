@@ -1,0 +1,67 @@
+<ion-view view-title = '我的佣金' class = 'spp-myCommission bg_f0f0f0'>
+	<ion-content>
+		<ion-list>
+			<ion-item class = 'item-divider font_14'>
+				领取推广任务分佣金额
+			</ion-item>
+			<ion-item class = 'bar-title'>
+				<div class="row">
+					<div class="col col-50 br">
+						<p class="top">昨日累计收益</p>
+						<p class="down">￥{{data.yesterdayTotal}}</p>
+					</div>
+					<div class="col col-50">
+						<p class="top">本月累计收益</p>
+						<p class="down">￥{{data.monthTotal}}</p>
+					</div>
+				</div>
+			</ion-item>
+			<ion-item class = 'item-divider color_c7c7c7'>
+				<p>每天将前一天的分佣款，结算至推客奖金账户。</p>
+				<p class="QRcode" ng-show="data.flexTogggle"><img ng-src="{{data.QRcode}}"/></p>
+				<p class="QRtext" ng-show="data.flexTogggle">长按识别关注“云付推客”公众号“提现”</p>
+				<div class="flexTogggle" ng-click="fun.changeFlexToggle()">
+					<span ng-show="!data.flexTogggle">
+						<span><i class="icon ion-ios-arrow-down"></i></span><span class="text">显示推客公众号二维码</span>
+					</span>
+					<span ng-show="data.flexTogggle">
+						<span><i class="icon ion-ios-arrow-up"></i></span><span class="text">隐藏推客公众号二维码</span>
+					</span>
+				</div>
+			</ion-item>
+			<ion-item class='commissionCell' ng-repeat="item in data.dayProfitTotal">
+				<div class="border">
+					<div class="row">
+						<div class="col col-70">
+							<p class="statu">{{item.title}}</p>
+							<p class="time">{{item.createTime}}</p>
+						</div>
+						<div class="col col-30">
+							<p class="momey">￥{{item.dayTotal|number:2}}</p>
+						</div>
+					</div>
+				</div>
+			</ion-item>
+			<ion-item class="padding0 noborder pageinitnoresult"
+                      ng-show="page.initNoResultShow()">
+
+                <p class="padding5 color_969696 text-center bg_f0f0f0">当前没有佣金明细</p>
+
+            </ion-item>
+
+            <ion-item class="padding0 noborder pageUpNoResult"
+                      ng-show="(!page.initNoResultShow() && page.upNoResultShow())">
+
+                <p class="padding5 color_969696 text-center bg_f0f0f0">没有更多佣金明细</p>
+
+            </ion-item>
+        </ion-list>
+
+
+        <ion-infinite-scroll
+                ng-if="!page.upNoResultShow()"
+                on-infinite="page.up()"
+                immediate-check="false">
+        </ion-infinite-scroll>
+	</ion-content>
+</ion-view>
